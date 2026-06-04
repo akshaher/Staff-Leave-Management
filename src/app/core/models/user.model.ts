@@ -1,0 +1,1 @@
+export interface User { id?: string; name: string; username: string; email: string; contactNumber: string; department: string; profileImage?: string; role?: string; }

@@ -1,0 +1,40 @@
+<div class="container mt-4">
+  <h2>Dashboard</h2>
+  <div *ngIf="role === 'HOD'" class="row mt-4">
+    <div class="col-md-4">
+      <div class="card text-white bg-primary mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Total Staff Members</h5>
+          <p class="card-text display-4">{{ staffCount }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div *ngIf="role === 'STAFF'" class="row mt-4">
+    <div class="col-md-4">
+      <div class="card text-white bg-info mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Total Leaves Applied</h5>
+          <p class="card-text display-4">{{ leaveStats.total }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-success mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Approved Leaves</h5>
+          <p class="card-text display-4">{{ leaveStats.approved }}</p>
+        </div>
+      </div>
+    </div>
+    <div class="col-md-4">
+      <div class="card text-white bg-danger mb-3">
+        <div class="card-body">
+          <h5 class="card-title">Rejected Leaves</h5>
+          <p class="card-text display-4">{{ leaveStats.rejected }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,46 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "fullName": "Admin HOD",
+      "mobileNumber": "9876543210",
+      "role": "HOD",
+      "email": "hod@test.com",
+      "password": "12345678"
+    },
+    {
+      "id": 2,
+      "fullName": "John Staff",
+      "mobileNumber": "9999999999",
+      "role": "STAFF",
+      "email": "john@test.com",
+      "password": "12345678"
+    },
+    {
+      "id": 3,
+      "fullName": "Priya Staff",
+      "mobileNumber": "8888888888",
+      "role": "STAFF",
+      "email": "priya@test.com",
+      "password": "12345678"
+    },
+    {
+      "id": 1780557597857,
+      "fullName": "AKSHAY AHER",
+      "mobileNumber": "8796964298",
+      "role": "HOD",
+      "email": "akshayaher9696@gmail.com",
+      "password": "123456@a"
+    }
+  ],
+  "leaves": [
+    {
+      "id": 1,
+      "staffId": 2,
+      "fromDate": "2025-01-10",
+      "toDate": "2025-01-12",
+      "reason": "Medical Leave",
+      "status": "Pending"
+    }
+  ]
+}

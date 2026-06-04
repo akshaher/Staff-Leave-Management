@@ -1,0 +1,159 @@
+<div class="register-wrapper">
+  <div class="container">
+    <div class="row justify-content-center">
+      <div class="col-lg-5 col-md-7">
+        <!-- Logo -->
+
+        <div class="text-center mb-4">
+          <div class="logo-circle">
+            <i class="bi bi-building"></i>
+          </div>
+
+          <h2 class="fw-bold mt-3">StaffFlow HR</h2>
+
+          <p class="text-muted">Create your employee account to manage leave</p>
+        </div>
+
+        <!-- Card -->
+
+        <div class="card shadow-sm border-0">
+          <div class="card-body p-4">
+            <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+              <!-- Full Name -->
+
+              <div class="mb-3">
+                <label class="form-label"> Full Name </label>
+
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="John Doe"
+                  formControlName="fullName"
+                />
+
+                <small
+                  class="text-danger"
+                  *ngIf="submitted && f.fullName.errors"
+                >
+                  Full Name is required
+                </small>
+              </div>
+
+              <!-- Mobile & Role -->
+
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                  <label class="form-label"> Mobile Number </label>
+
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="9876543210"
+                    formControlName="mobileNumber"
+                  />
+
+                  <small
+                    class="text-danger"
+                    *ngIf="submitted && f.mobileNumber.errors"
+                  >
+                    Enter valid mobile number
+                  </small>
+                </div>
+
+                <div class="col-md-6 mb-3">
+                  <label class="form-label"> Role </label>
+
+                  <select class="form-select" formControlName="role">
+                    <option value="">Select Role</option>
+
+                    <option value="HOD">HOD</option>
+
+                    <option value="STAFF">Staff</option>
+                  </select>
+
+                  <small class="text-danger" *ngIf="submitted && f.role.errors">
+                    Role is required
+                  </small>
+                </div>
+              </div>
+
+              <!-- Email -->
+
+              <div class="mb-3">
+                <label class="form-label"> Email Address </label>
+
+                <input
+                  type="email"
+                  class="form-control"
+                  placeholder="john@test.com"
+                  formControlName="email"
+                />
+
+                <small class="text-danger" *ngIf="submitted && f.email.errors">
+                  Enter valid email
+                </small>
+              </div>
+
+              <!-- Password -->
+
+              <div class="mb-3">
+                <label class="form-label"> Password </label>
+
+                <div class="input-group">
+                  <input
+                    [type]="showPassword ? 'text' : 'password'"
+                    class="form-control"
+                    formControlName="password"
+                  />
+
+                  <button
+                    type="button"
+                    class="btn btn-outline-secondary"
+                    (click)="togglePassword()"
+                  >
+                    <i
+                      class="bi"
+                      [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"
+                    >
+                    </i>
+                  </button>
+                </div>
+
+                <small class="text-muted">
+                  Password must be at least 8 characters long and contain at least one special character and one letter.
+                </small>
+
+                <br />
+
+                <small
+                  class="text-danger"
+                  *ngIf="submitted && f.password.errors"
+                >
+                  Invalid Password
+                </small>
+              </div>
+
+              <!-- Button -->
+
+              <div class="d-grid mt-4">
+                <button class="btn btn-primary btn-lg">Sign Up</button>
+              </div>
+            </form>
+
+            <!-- Footer -->
+
+            <div class="text-center mt-4">
+              <p class="mb-0">
+                Already have an account?
+
+                <a routerLink="/auth/login" class="text-decoration-none">
+                  Login
+                </a>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

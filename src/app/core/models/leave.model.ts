@@ -1,0 +1,1 @@
+export interface Leave { id?: string; userId: string; fromDate: string; toDate: string; reason: string; status: string; }

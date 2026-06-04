@@ -1,0 +1,33 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Staff Management</h2>
+    <button class="btn btn-primary" routerLink="/staff/add">Add New Staff</button>
+  </div>
+  
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Full Name</th>
+        <th>Username</th>
+        <th>Email</th>
+        <th>Mobile</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let staff of staffList">
+        <td>{{ staff.fullName }}</td>
+        <td>{{ staff.username }}</td>
+        <td>{{ staff.email }}</td>
+        <td>{{ staff.mobile }}</td>
+        <td>
+          <button class="btn btn-sm btn-info me-2">View</button>
+          <button class="btn btn-sm btn-danger" (click)="deleteStaff(staff.id)">Delete</button>
+        </td>
+      </tr>
+      <tr *ngIf="staffList.length === 0">
+        <td colspan="5" class="text-center">No staff members found.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

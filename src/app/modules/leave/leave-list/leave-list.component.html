@@ -1,0 +1,45 @@
+<div class="container mt-4">
+  <div class="d-flex justify-content-between align-items-center mb-3">
+    <h2>Leave Management</h2>
+    <button *ngIf="role === 'STAFF'" class="btn btn-primary" routerLink="/leave/apply">Apply for New Leave</button>
+  </div>
+  
+  <table class="table table-bordered table-striped">
+    <thead class="table-dark">
+      <tr>
+        <th>Sr No.</th>
+        <th *ngIf="role === 'HOD'">Staff Name</th>
+        <th>From Date</th>
+        <th>To Date</th>
+        <th>Reason</th>
+        <th>Status</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let leave of leaveList; let i = index">
+        <td>{{ i + 1 }}</td>
+        <td *ngIf="role === 'HOD'">{{ leave.staffName }}</td>
+        <td>{{ leave.fromDate }}</td>
+        <td>{{ leave.toDate }}</td>
+        <td>{{ leave.reason }}</td>
+        <td>
+          <span class="badge" 
+                [ngClass]="{'bg-success': leave.status === 'Approved', 'bg-warning': leave.status === 'Pending', 'bg-danger': leave.status === 'Rejected'}">
+            {{ leave.status }}
+          </span>
+        </td>
+        <td>
+          <button class="btn btn-sm btn-info me-2">View</button>
+          <ng-container *ngIf="role === 'HOD' && leave.status === 'Pending'">
+            <button class="btn btn-sm btn-success me-2" (click)="updateStatus(leave, 'Approved')">Approve</button>
+            <button class="btn btn-sm btn-danger" (click)="updateStatus(leave, 'Rejected')">Reject</button>
+          </ng-container>
+        </td>
+      </tr>
+      <tr *ngIf="leaveList.length === 0">
+        <td colspan="7" class="text-center">No leave records found.</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

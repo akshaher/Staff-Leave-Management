@@ -1,0 +1,21 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm">
+  <div class="container-fluid">
+    <span class="navbar-brand"> Staff Leave Management </span>
+
+    <div class="ms-auto d-flex align-items-center">
+      <div class="user-info">
+          <i class="bi bi-person-circle text-white fs-3 me-2"></i>
+
+  <span class="user-name">
+    {{ user?.fullName }}
+  </span>
+      </div>
+
+    
+
+      <button class="btn btn-light btn-sm ms-3" (click)="logout()">
+        Logout
+      </button>
+    </div>
+  </div>
+</nav>
