@@ -20,13 +20,16 @@ export class DashboardComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    // Dummy role for testing: change to 'HOD' or 'STAFF' to test different views
-    this.role = this.authService.getRole() || 'HOD'; 
+    this.role = this.authService.getRole();
     
     if (this.role === 'HOD') {
-      this.staffCount = this.userService.getStaffCount();
+      this.userService.getStaffCount().subscribe(response => {
+        this.staffCount = response.count;
+      });
     } else {
-      this.leaveStats = this.leaveService.getLeaveStats();
+      this.leaveService.getLeaveStats().subscribe(stats => {
+        this.leaveStats = stats;
+      });
     }
   }
 }

@@ -3,6 +3,16 @@
     <h2>Staff Management</h2>
     <button class="btn btn-primary" routerLink="/staff/add">Add New Staff</button>
   </div>
+
+  <div class="mb-3">
+    <input
+      type="text"
+      class="form-control"
+      placeholder="Search by first name"
+      [(ngModel)]="searchText"
+      (ngModelChange)="page = 1"
+    />
+  </div>
   
   <table class="table table-bordered table-striped">
     <thead class="table-dark">
@@ -15,19 +25,34 @@
       </tr>
     </thead>
     <tbody>
-      <tr *ngFor="let staff of staffList">
+      <tr *ngFor="let staff of staffList | searchStaff: searchText | sortStaff | slice: (page - 1) * pageSize : page * pageSize">
         <td>{{ staff.fullName }}</td>
         <td>{{ staff.username }}</td>
         <td>{{ staff.email }}</td>
         <td>{{ staff.mobile }}</td>
         <td>
-          <button class="btn btn-sm btn-info me-2">View</button>
+          <button class="btn btn-sm btn-info me-2" [routerLink]="['/staff/view', staff.id]">View</button>
           <button class="btn btn-sm btn-danger" (click)="deleteStaff(staff.id)">Delete</button>
         </td>
       </tr>
-      <tr *ngIf="staffList.length === 0">
+      <tr *ngIf="(staffList | searchStaff: searchText).length === 0">
         <td colspan="5" class="text-center">No staff members found.</td>
       </tr>
     </tbody>
   </table>
+
+  <!-- Pagination -->
+  <nav *ngIf="totalPages > 1" aria-label="Page navigation">
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="page === 1">
+        <button class="page-link" (click)="prevPage()">Previous</button>
+      </li>
+      <li class="page-item" *ngFor="let p of getPagesArray()" [class.active]="p === page">
+        <button class="page-link" (click)="goToPage(p)">{{ p }}</button>
+      </li>
+      <li class="page-item" [class.disabled]="page === totalPages">
+        <button class="page-link" (click)="nextPage()">Next</button>
+      </li>
+    </ul>
+  </nav>
 </div>

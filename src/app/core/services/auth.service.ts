@@ -1,10 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
-    private baseUrl = 'http://localhost:5000/api';
+    private baseUrl = environment.apiUrl;
 
     constructor(private http: HttpClient) { }
 
@@ -27,7 +28,7 @@ export class AuthService {
         return localStorage.getItem('token');
     }
 
-      getRole():string|null{
+    getRole():string|null{
         return localStorage.getItem('role');
     }
 

@@ -28,8 +28,24 @@
       "id": 1780557597857,
       "fullName": "AKSHAY AHER",
       "mobileNumber": "8796964298",
-      "role": "HOD",
+      "role": "STAFF",
       "email": "akshayaher9696@gmail.com",
+      "password": "123456@a"
+    },
+    {
+      "id": 1780904357435,
+      "fullName": "Akshay Aher",
+      "mobileNumber": "8796964298",
+      "role": "STAFF",
+      "email": "ak@bts.com",
+      "password": "123456@a"
+    },
+    {
+      "id": 1780904521126,
+      "fullName": "Aditya Birla",
+      "mobileNumber": "9876543210",
+      "role": "HOD",
+      "email": "adityabirla@bts.com",
       "password": "123456@a"
     }
   ],
@@ -41,6 +57,22 @@
       "toDate": "2025-01-12",
       "reason": "Medical Leave",
       "status": "Pending"
+    },
+    {
+      "id": 1780904398741,
+      "staffId": 1780904357435,
+      "fromDate": "2026-06-08",
+      "toDate": "2026-06-09",
+      "reason": "Personal Work",
+      "status": "Approved"
+    },
+    {
+      "id": 1780904659676,
+      "staffId": 1780904357435,
+      "fromDate": "2026-06-09",
+      "toDate": "2026-06-10",
+      "reason": "Sick Leave",
+      "status": "Rejected"
     }
   ]
 }

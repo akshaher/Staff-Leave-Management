@@ -8,16 +8,63 @@ import { UserService } from '../../../core/services/user.service';
 })
 export class StaffListComponent implements OnInit {
   staffList: any[] = [];
+  searchText = '';
+  page: number = 1;
+  pageSize: number = 10;
 
   constructor(private userService: UserService) {}
 
   ngOnInit(): void {
-    this.staffList = this.userService.getStaffList();
+    this.loadStaff();
+  }
+
+  loadStaff(): void {
+    this.userService.getStaffList().subscribe({
+      next: (staff) => this.staffList = staff
+    });
+  }
+
+  get paginatedStaffList() {
+    const startIndex = (this.page - 1) * this.pageSize;
+    return this.staffList.slice(startIndex, startIndex + this.pageSize);
+  }
+
+  get totalPages() {
+    return Math.ceil(this.staffList.length / this.pageSize);
+  }
+
+  nextPage() {
+    if (this.page < this.totalPages) {
+      this.page++;
+    }
+  }
+
+  prevPage() {
+    if (this.page > 1) {
+      this.page--;
+    }
+  }
+
+  goToPage(page: number) {
+    if (page >= 1 && page <= this.totalPages) {
+      this.page = page;
+    }
+  }
+
+  getPagesArray() {
+    return Array(this.totalPages).fill(0).map((x, i) => i + 1);
   }
 
   deleteStaff(id: string) {
     if (confirm('Are you sure you want to delete this staff member?')) {
-      this.staffList = this.staffList.filter(s => s.id !== id);
+      this.userService.deleteStaff(id).subscribe({
+        next: () => {
+          this.staffList = this.staffList.filter(s => s.id !== id);
+          if (this.page > this.totalPages && this.totalPages > 0) {
+            this.page = this.totalPages;
+          }
+        }
+      });
     }
   }
 }

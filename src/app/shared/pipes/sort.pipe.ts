@@ -1,6 +1,17 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'sort' })
-export class SortPipe implements PipeTransform {
-  transform(value: any, ...args: any[]) { return value; }
+@Pipe({ name: 'sortStaff' })
+export class SortStaffPipe implements PipeTransform {
+  transform(staffList: any[]): any[] {
+    if (!Array.isArray(staffList)) {
+      return [];
+    }
+
+    return [...staffList].sort((firstStaff, secondStaff) => {
+      const firstName = (firstStaff.fullName || '').toLowerCase();
+      const secondName = (secondStaff.fullName || '').toLowerCase();
+
+      return firstName.localeCompare(secondName);
+    });
+  }
 }

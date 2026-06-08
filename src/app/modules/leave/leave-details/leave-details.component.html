@@ -1,1 +1,35 @@
-<p>leave-details works!</p>
+<div class="container mt-4" *ngIf="leaveDetails">
+  <div class="card">
+    <div class="card-header bg-primary text-white d-flex justify-content-between align-items-center">
+      <h3 class="mb-0">Leave Details</h3>
+      <button class="btn btn-light btn-sm" routerLink="/leave">Back to List</button>
+    </div>
+    <div class="card-body">
+      <div class="row mb-3">
+        <div class="col-md-3 fw-bold">Staff Name:</div>
+        <div class="col-md-9">{{ leaveDetails.staffName }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3 fw-bold">From Date:</div>
+        <div class="col-md-9">{{ leaveDetails.fromDate | date:'mediumDate' }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3 fw-bold">To Date:</div>
+        <div class="col-md-9">{{ leaveDetails.toDate | date:'mediumDate' }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3 fw-bold">Reason:</div>
+        <div class="col-md-9">{{ leaveDetails.reason }}</div>
+      </div>
+      <div class="row mb-3">
+        <div class="col-md-3 fw-bold">Status:</div>
+        <div class="col-md-9">
+          <span class="badge" 
+                [ngClass]="{'bg-success': leaveDetails.status === 'Approved', 'bg-warning text-dark': leaveDetails.status === 'Pending', 'bg-danger': leaveDetails.status === 'Rejected'}">
+            {{ leaveDetails.status }}
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

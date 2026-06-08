@@ -3,8 +3,8 @@ import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { LoaderComponent } from './components/loader/loader.component';
-import { SearchPipe } from './pipes/search.pipe';
-import { SortPipe } from './pipes/sort.pipe';
+import { SearchStaffPipe } from './pipes/search.pipe';
+import { SortStaffPipe } from './pipes/sort.pipe';
 import { RouterModule } from '@angular/router';
 
 @NgModule({
@@ -12,8 +12,8 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     SidebarComponent,
     LoaderComponent,
-    SearchPipe,
-    SortPipe
+    SearchStaffPipe,
+    SortStaffPipe
   ],
   imports: [
     CommonModule,
@@ -23,8 +23,8 @@ import { RouterModule } from '@angular/router';
     HeaderComponent,
     SidebarComponent,
     LoaderComponent,
-    SearchPipe,
-    SortPipe,
+    SearchStaffPipe,
+    SortStaffPipe,
     RouterModule
   ]
 })

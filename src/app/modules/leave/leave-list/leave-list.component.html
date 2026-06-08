@@ -30,7 +30,7 @@
           </span>
         </td>
         <td>
-          <button class="btn btn-sm btn-info me-2">View</button>
+          <button class="btn btn-sm btn-info me-2" [routerLink]="['/leave/details', leave.id]">View</button>
           <ng-container *ngIf="role === 'HOD' && leave.status === 'Pending'">
             <button class="btn btn-sm btn-success me-2" (click)="updateStatus(leave, 'Approved')">Approve</button>
             <button class="btn btn-sm btn-danger" (click)="updateStatus(leave, 'Rejected')">Reject</button>

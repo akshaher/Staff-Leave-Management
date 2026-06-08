@@ -1,25 +1,35 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
+import { environment } from '../../../environments/environment';
 
 @Injectable({ providedIn: 'root' })
 export class LeaveService {
-  private leaves = [
-    { id: '1', staffName: 'John Doe', fromDate: '2023-10-01', toDate: '2023-10-05', reason: 'Vacation', status: 'Approved' },
-    { id: '2', staffName: 'Jane Smith', fromDate: '2023-11-01', toDate: '2023-11-02', reason: 'Sick Leave', status: 'Pending' }
-  ];
+  private baseUrl = environment.apiUrl;
 
-  getAllLeaves() {
-    return this.leaves;
+  constructor(private http: HttpClient) {}
+
+  getAllLeaves(): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/leaves`);
   }
 
-  getLeavesByStaff(username: string) {
-    return this.leaves; // Dummy logic: return all for now
+  getLeavesByStaff(username: string): Observable<any[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/leaves`);
   }
 
-  getLeaveStats() {
-    return {
-      total: this.leaves.length,
-      approved: this.leaves.filter(l => l.status === 'Approved').length,
-      rejected: this.leaves.filter(l => l.status === 'Rejected').length
-    };
+  getLeaveStats(): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/leaves/stats`);
+  }
+
+  getLeaveById(id: string): Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}/leaves/${id}`);
+  }
+
+  applyLeave(leaveData: any): Observable<any> {
+    return this.http.post<any>(`${this.baseUrl}/leaves`, leaveData);
+  }
+
+  updateLeaveStatus(id: string, status: string): Observable<any> {
+    return this.http.patch<any>(`${this.baseUrl}/leaves/${id}/status`, { status });
   }
 }

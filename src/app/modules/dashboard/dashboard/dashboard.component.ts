@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { LeaveService } from '../../../core/services/leave.service';
+import { UserService } from '../../../core/services/user.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -9,18 +11,39 @@ export class DashboardComponent implements OnInit {
 
   role = '';
 
-  totalStaff = 25;
+  totalStaff = 0;
 
-  totalLeaves = 10;
+  totalLeaves = 0;
 
-  approvedLeaves = 6;
+  approvedLeaves = 0;
 
-  rejectedLeaves = 2;
+  rejectedLeaves = 0;
+
+  constructor(
+    private userService: UserService,
+    private leaveService: LeaveService
+  ) {}
 
   ngOnInit(): void {
 
     this.role =
       localStorage.getItem('role') || '';
+
+    if (this.role === 'HOD') {
+      this.userService.getStaffCount().subscribe({
+        next: (response) => this.totalStaff = response.count
+      });
+    }
+
+    if (this.role === 'STAFF') {
+      this.leaveService.getLeaveStats().subscribe({
+        next: (stats) => {
+          this.totalLeaves = stats.total;
+          this.approvedLeaves = stats.approved;
+          this.rejectedLeaves = stats.rejected;
+        }
+      });
+    }
 
   }
 

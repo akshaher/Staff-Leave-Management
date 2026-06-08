@@ -20,13 +20,19 @@ export class LeaveListComponent implements OnInit {
     this.role = this.authService.getRole() || 'HOD';
     
     if (this.role === 'HOD') {
-      this.leaveList = this.leaveService.getAllLeaves();
+      this.leaveService.getAllLeaves().subscribe({
+        next: (leaves) => this.leaveList = leaves
+      });
     } else {
-      this.leaveList = this.leaveService.getLeavesByStaff('currentUser');
+      this.leaveService.getLeavesByStaff('currentUser').subscribe({
+        next: (leaves) => this.leaveList = leaves
+      });
     }
   }
 
   updateStatus(leave: any, status: string) {
-    leave.status = status;
+    this.leaveService.updateLeaveStatus(leave.id, status).subscribe({
+      next: (updatedLeave) => leave.status = updatedLeave.status
+    });
   }
 }
