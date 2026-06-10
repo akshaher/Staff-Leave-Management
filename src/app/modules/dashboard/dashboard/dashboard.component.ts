@@ -1,23 +1,22 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LeaveService } from '../../../core/services/leave.service';
 import { UserService } from '../../../core/services/user.service';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
   styleUrls: ['./dashboard.component.css']
 })
-export class DashboardComponent implements OnInit {
+export class DashboardComponent implements OnInit, OnDestroy {
 
   role = '';
-
   totalStaff = 0;
-
   totalLeaves = 0;
-
   approvedLeaves = 0;
-
   rejectedLeaves = 0;
+
+  private statsSubscription?: Subscription;
 
   constructor(
     private userService: UserService,
@@ -36,7 +35,7 @@ export class DashboardComponent implements OnInit {
     }
 
     if (this.role === 'STAFF') {
-      this.leaveService.getLeaveStats().subscribe({
+      this.statsSubscription = this.leaveService.getLeaveStats().subscribe({
         next: (stats) => {
           this.totalLeaves = stats.total;
           this.approvedLeaves = stats.approved;
@@ -45,6 +44,10 @@ export class DashboardComponent implements OnInit {
       });
     }
 
+  }
+
+  ngOnDestroy(): void {
+    this.statsSubscription?.unsubscribe();
   }
 
 }

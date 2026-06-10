@@ -20,7 +20,13 @@ export class LeaveDetailsComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.leaveService.getLeaveById(id).subscribe({
-        next: (leave) => this.leaveDetails = leave,
+        next: (leave) => {
+          if (leave) {
+            this.leaveDetails = leave;
+          } else {
+            this.router.navigate(['/leave']);
+          }
+        },
         error: () => this.router.navigate(['/leave'])
       });
     } else {

@@ -47,6 +47,14 @@
       "role": "HOD",
       "email": "adityabirla@bts.com",
       "password": "123456@a"
+    },
+    {
+      "id": 3,
+      "fullName": "Test Staff",
+      "mobileNumber": "9876543210",
+      "role": "STAFF",
+      "email": "ts@bts.com",
+      "password": "123456@a"
     }
   ],
   "leaves": [
@@ -73,6 +81,38 @@
       "toDate": "2026-06-10",
       "reason": "Sick Leave",
       "status": "Rejected"
+    },
+    {
+      "id": 1780918108832,
+      "staffId": 1780904357435,
+      "fromDate": "2026-06-03",
+      "toDate": "2026-06-04",
+      "reason": "learning how to apply the leave ",
+      "status": "Pending"
+    },
+    {
+      "id": 1780918139850,
+      "staffId": 1780904357435,
+      "fromDate": "2026-06-11",
+      "toDate": "2026-06-12",
+      "reason": "Is it really working ?",
+      "status": "Pending"
+    },
+    {
+      "id": 1780918139850,
+      "staffId": 3,
+      "fromDate": "2026-06-14",
+      "toDate": "2026-06-15",
+      "reason": "Test Staff Leave",
+      "status": "Pending"
+    },
+    {
+      "id": 1780921521443,
+      "staffId": 3,
+      "fromDate": "2026-06-11",
+      "toDate": "2026-06-12",
+      "reason": "Personal Work",
+      "status": "Pending"
     }
   ]
 }
