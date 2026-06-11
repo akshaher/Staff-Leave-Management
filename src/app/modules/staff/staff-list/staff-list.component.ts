@@ -24,12 +24,8 @@ export class StaffListComponent implements OnInit {
     });
   }
 
-  get paginatedStaffList() {
-    const startIndex = (this.page - 1) * this.pageSize;
-    return this.staffList.slice(startIndex, startIndex + this.pageSize);
-  }
 
-  get totalPages() {
+  get totalPages() {  
     return Math.ceil(this.staffList.length / this.pageSize);
   }
 
