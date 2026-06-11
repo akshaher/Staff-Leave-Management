@@ -13,4 +13,5 @@ td:last-child {
 .page-item.active .page-link {
   background-color: var(--slm-primary);
   border-color: var(--slm-primary);
+  color: var(--slm-surface)
 }
