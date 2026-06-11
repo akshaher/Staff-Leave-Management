@@ -23,3 +23,11 @@ td:last-child {
   font-size: 4rem;
   color: #adb5bd;
 }
+
+.page-shell {
+  background-image: url('/assets/auth_bg_image_1781180161097.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+}

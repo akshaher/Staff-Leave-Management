@@ -24,7 +24,12 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "auth_bg_image_1781180161097.png",
+                "input": "C:/Users/user/.gemini/antigravity/brain/ad5c9624-d3d5-4e07-ad68-347c648ca679",
+                "output": "/assets"
+              }
             ],
             "styles": [
               "node_modules/bootstrap-icons/font/bootstrap-icons.css",
@@ -95,7 +100,12 @@
             "karmaConfig": "karma.conf.js",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              {
+                "glob": "auth_bg_image_1781180161097.png",
+                "input": "C:/Users/user/.gemini/antigravity/brain/ad5c9624-d3d5-4e07-ad68-347c648ca679",
+                "output": "/assets"
+              }
             ],
             "styles": [
               "src/styles.css"

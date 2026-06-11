@@ -13,5 +13,25 @@ td:last-child {
 .page-item.active .page-link {
   background-color: var(--slm-primary);
   border-color: var(--slm-primary);
-  color: var(--slm-surface)
+  color: var(--slm-surface);
+}
+
+.page-shell {
+  background-image: url('/assets/auth_bg_image_1781180161097.png');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  z-index: 1;
+}
+
+.page-shell::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.88);
+  z-index: -1;
+  border-radius: inherit;
 }
