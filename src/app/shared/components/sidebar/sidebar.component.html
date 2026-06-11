@@ -1,5 +1,7 @@
-<div class="sidebar bg-dark text-white p-3" style="min-height: 100vh; width: 250px;">
-  <h4 class="mb-4 text-center border-bottom pb-2">Menu</h4>
+<div class="sidebar text-white p-3">
+  <div class="sidebar-title mb-4">
+    <span>Workspace</span>
+  </div>
   <ul class="nav flex-column gap-2">
     <li class="nav-item">
       <a class="nav-link text-white" routerLink="/dashboard" routerLinkActive="active-link">
@@ -8,7 +10,7 @@
     </li>
     
     <li class="nav-item" *ngIf="role === 'HOD'">
-      <a class="nav-link text-white" routerLink="/staff" routerLinkActive="active-link" (click)="test()">
+      <a class="nav-link text-white" routerLink="/staff" routerLinkActive="active-link" >
         <i class="bi bi-people me-2"></i> Staff Management
       </a>
     </li>

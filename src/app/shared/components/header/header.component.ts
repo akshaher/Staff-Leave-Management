@@ -15,7 +15,6 @@ export class HeaderComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-
     this.user = JSON.parse(
       localStorage.getItem('user') || '{}'
     );
@@ -23,9 +22,7 @@ export class HeaderComponent implements OnInit {
   }
 
   logout(): void {
-
     localStorage.clear();
-
     this.router.navigate(['/login']);
 
   }

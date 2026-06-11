@@ -17,22 +17,6 @@
       "password": "12345678"
     },
     {
-      "id": 3,
-      "fullName": "Priya Staff",
-      "mobileNumber": "8888888888",
-      "role": "STAFF",
-      "email": "priya@test.com",
-      "password": "12345678"
-    },
-    {
-      "id": 1780557597857,
-      "fullName": "AKSHAY AHER",
-      "mobileNumber": "8796964298",
-      "role": "STAFF",
-      "email": "akshayaher9696@gmail.com",
-      "password": "123456@a"
-    },
-    {
       "id": 1780904357435,
       "fullName": "Akshay Aher",
       "mobileNumber": "8796964298",
@@ -49,11 +33,29 @@
       "password": "123456@a"
     },
     {
-      "id": 3,
-      "fullName": "Test Staff",
-      "mobileNumber": "9876543210",
+      "id": 1781160074751,
+      "fullName": "Pritam Raghunath Aher",
+      "username": "Pritam",
+      "email": "pritam@bts.com",
+      "mobileNumber": "9404202411",
+      "department": "Civil",
       "role": "STAFF",
-      "email": "ts@bts.com",
+      "password": "12345678"
+    },
+    {
+      "id": 1781166354068,
+      "fullName": "Test Staff",
+      "mobileNumber": "1234567890",
+      "role": "STAFF",
+      "email": "test.test@neosoft.com",
+      "password": "123456@a"
+    },
+    {
+      "id": 1781168188731,
+      "fullName": "Test Staff",
+      "mobileNumber": "1234567890",
+      "role": "STAFF",
+      "email": "test.test@neosof",
       "password": "123456@a"
     }
   ],
@@ -88,7 +90,7 @@
       "fromDate": "2026-06-03",
       "toDate": "2026-06-04",
       "reason": "learning how to apply the leave ",
-      "status": "Pending"
+      "status": "Approved"
     },
     {
       "id": 1780918139850,
@@ -96,22 +98,22 @@
       "fromDate": "2026-06-11",
       "toDate": "2026-06-12",
       "reason": "Is it really working ?",
-      "status": "Pending"
+      "status": "Rejected"
     },
     {
-      "id": 1780918139850,
-      "staffId": 3,
-      "fromDate": "2026-06-14",
-      "toDate": "2026-06-15",
-      "reason": "Test Staff Leave",
-      "status": "Pending"
-    },
-    {
-      "id": 1780921521443,
-      "staffId": 3,
+      "id": 1781170034768,
+      "staffId": 1781168188731,
       "fromDate": "2026-06-11",
       "toDate": "2026-06-12",
-      "reason": "Personal Work",
+      "reason": "Sick Leave",
+      "status": "Pending"
+    },
+    {
+      "id": 1781176461517,
+      "staffId": 1781168188731,
+      "fromDate": "2026-06-13",
+      "toDate": "2026-06-15",
+      "reason": "Planned Leave",
       "status": "Pending"
     }
   ]

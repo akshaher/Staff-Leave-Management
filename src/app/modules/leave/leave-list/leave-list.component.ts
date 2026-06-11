@@ -22,7 +22,10 @@ export class LeaveListComponent implements OnInit, OnDestroy {
     this.role = this.authService.getRole() || 'HOD';
 
     this.leavesSubscription = this.leaveService.leaves$.subscribe({
-      next: (leaves) => this.leaveList = leaves
+      next: (leaves) => {
+        this.leaveList = leaves
+      console.log(leaves);
+      }
     });
 
     this.leaveService.getAllLeaves().subscribe();

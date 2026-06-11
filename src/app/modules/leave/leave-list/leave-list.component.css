@@ -1,1 +1,25 @@
-/* leave-list styles */
+.table-card {
+  border-radius: 8px;
+}
+
+td:last-child {
+  white-space: nowrap;
+}
+
+.no-leave {
+  min-height: 60vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  text-align: center;
+  color: #6c757d;
+  font-size: 1.1rem;
+  font-weight: 500;
+}
+
+.no-leave i {
+  font-size: 4rem;
+  color: #adb5bd;
+}

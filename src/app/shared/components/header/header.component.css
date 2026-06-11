@@ -2,6 +2,25 @@
   height: 60px;
 }
 
+.app-header {
+  background: linear-gradient(90deg, #1f6feb 0%, #1557c0 55%, #0f766e 100%);
+}
+
+.navbar-brand {
+  font-weight: 700;
+  letter-spacing: 0;
+}
+
+.brand-mark {
+  width: 34px;
+  height: 34px;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.16);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .user-info {
   display: flex;
   align-items: center;
@@ -29,4 +48,14 @@
 .user-name {
   color: #fff;
   font-weight: 500;
+}
+
+@media (max-width: 575.98px) {
+  .user-name {
+    display: none;
+  }
+
+  .navbar-brand {
+    font-size: 1rem;
+  }
 }

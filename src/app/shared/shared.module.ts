@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { HeaderComponent } from './components/header/header.component';
 import { SidebarComponent } from './components/sidebar/sidebar.component';
-import { LoaderComponent } from './components/loader/loader.component';
 import { SearchStaffPipe } from './pipes/search.pipe';
 import { SortStaffPipe } from './pipes/sort.pipe';
 import { RouterModule } from '@angular/router';
@@ -11,7 +10,6 @@ import { RouterModule } from '@angular/router';
   declarations: [
     HeaderComponent,
     SidebarComponent,
-    LoaderComponent,
     SearchStaffPipe,
     SortStaffPipe
   ],
@@ -22,7 +20,6 @@ import { RouterModule } from '@angular/router';
   exports: [
     HeaderComponent,
     SidebarComponent,
-    LoaderComponent,
     SearchStaffPipe,
     SortStaffPipe,
     RouterModule

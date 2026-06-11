@@ -1,1 +1,9 @@
-/* add-staff styles */
+.card {
+  max-width: 780px;
+}
+
+.card-header h3 {
+  color: var(--slm-text);
+  font-size: 1.35rem;
+  font-weight: 700;
+}

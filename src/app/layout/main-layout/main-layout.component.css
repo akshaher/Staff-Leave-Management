@@ -1,6 +1,21 @@
 .content-area {
   flex: 1;
-  padding: 20px;
-  background: #f5f6fa;
+  padding: 28px;
+  background: var(--slm-bg);
   min-height: calc(100vh - 60px);
+  overflow-x: hidden;
+}
+
+.app-frame {
+  background: var(--slm-bg);
+}
+
+@media (max-width: 767.98px) {
+  .app-frame {
+    flex-direction: column;
+  }
+
+  .content-area {
+    padding: 18px;
+  }
 }

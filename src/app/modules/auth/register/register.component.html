@@ -2,35 +2,25 @@
   <div class="container">
     <div class="row justify-content-center">
       <div class="col-lg-5 col-md-7">
-        <!-- Logo -->
-
         <div class="text-center mb-4">
           <div class="logo-circle">
             <i class="bi bi-building"></i>
           </div>
-
           <h2 class="fw-bold mt-3">StaffFlow HR</h2>
-
           <p class="text-muted">Create your employee account to manage leave</p>
         </div>
-
-        <!-- Card -->
 
         <div class="card shadow-sm border-0">
           <div class="card-body p-4">
             <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
-              <!-- Full Name -->
-
               <div class="mb-3">
                 <label class="form-label"> Full Name </label>
-
                 <input
                   type="text"
                   class="form-control"
-                  placeholder="John Doe"
+                  placeholder="x y z"
                   formControlName="fullName"
                 />
-
                 <small
                   class="text-danger"
                   *ngIf="submitted && f.fullName.errors"
@@ -39,19 +29,15 @@
                 </small>
               </div>
 
-              <!-- Mobile & Role -->
-
               <div class="row">
                 <div class="col-md-6 mb-3">
                   <label class="form-label"> Mobile Number </label>
-
                   <input
                     type="text"
                     class="form-control"
                     placeholder="9876543210"
                     formControlName="mobileNumber"
                   />
-
                   <small
                     class="text-danger"
                     *ngIf="submitted && f.mobileNumber.errors"
@@ -62,12 +48,9 @@
 
                 <div class="col-md-6 mb-3">
                   <label class="form-label"> Role </label>
-
                   <select class="form-select" formControlName="role">
                     <option value="">Select Role</option>
-
                     <option value="HOD">HOD</option>
-
                     <option value="STAFF">Staff</option>
                   </select>
 
@@ -77,35 +60,30 @@
                 </div>
               </div>
 
-              <!-- Email -->
-
               <div class="mb-3">
                 <label class="form-label"> Email Address </label>
-
                 <input
                   type="email"
                   class="form-control"
-                  placeholder="john@test.com"
+                  placeholder="firstname.lastname@company.com"
                   formControlName="email"
                 />
-
-                <small class="text-danger" *ngIf="submitted && f.email.errors">
+                <small class="text-danger" *ngIf="submitted && f.email?.errors?.['email']">
                   Enter valid email
+                </small>
+                <small  class="text-danger" *ngIf="submitted &&  f.email?.errors?.['emailExists']">
+                  Email Already Exists, Please try with another one.
                 </small>
               </div>
 
-              <!-- Password -->
-
               <div class="mb-3">
                 <label class="form-label"> Password </label>
-
                 <div class="input-group">
                   <input
                     [type]="showPassword ? 'text' : 'password'"
                     class="form-control"
                     formControlName="password"
                   />
-
                   <button
                     type="button"
                     class="btn btn-outline-secondary"
@@ -120,7 +98,8 @@
                 </div>
 
                 <small class="text-muted">
-                  Password must be at least 8 characters long and contain at least one special character and one letter.
+                  Password must be at least 8 characters long and contain at
+                  least one special character and one letter.
                 </small>
 
                 <br />
@@ -132,15 +111,21 @@
                   Invalid Password
                 </small>
               </div>
-
-              <!-- Button -->
-
+   
+              <div *ngIf="loginError" class="alert alert-danger">
+                {{ loginError }}
+              </div>
               <div class="d-grid mt-4">
-                <button class="btn btn-primary btn-lg">Sign Up</button>
+                <button  class="btn btn-primary btn-lg">
+                  <span *ngIf="!loading">Sign up</span>
+
+                <span *ngIf="loading">
+                  <span class="spinner-border spinner-border-sm me-2"> </span>
+                  Loading...
+                </span>
+                </button>
               </div>
             </form>
-
-            <!-- Footer -->
 
             <div class="text-center mt-4">
               <p class="mb-0">

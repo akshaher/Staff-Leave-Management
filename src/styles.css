@@ -1,1 +1,139 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  --slm-bg: #f6f8fb;
+  --slm-surface: #ffffff;
+  --slm-text: #172033;
+  --slm-muted: #6b7280;
+  --slm-border: #e6ebf2;
+  --slm-primary: #1f6feb;
+  --slm-primary-dark: #1557c0;
+  --slm-accent: #00a884;
+  --slm-warning: #f5b84b;
+  --slm-danger: #df4759;
+  --slm-sidebar: #111827;
+  --slm-shadow: 0 12px 32px rgba(23, 32, 51, 0.08);
+}
+
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  background: var(--slm-bg);
+  color: var(--slm-text);
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.page-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+}
+
+.page-title {
+  color: var(--slm-text);
+  font-weight: 700;
+  margin-bottom: 0;
+}
+
+.page-kicker {
+  color: var(--slm-muted);
+  font-size: 0.95rem;
+  margin: 0.35rem 0 0;
+}
+
+.card,
+.table-card {
+  border: 1px solid var(--slm-border);
+  border-radius: 8px;
+  box-shadow: var(--slm-shadow);
+}
+
+.card-header {
+  border-bottom-color: var(--slm-border);
+}
+
+.soft-card {
+  background: var(--slm-surface);
+  border: 1px solid var(--slm-border);
+  border-radius: 8px;
+  box-shadow: var(--slm-shadow);
+}
+
+.btn {
+  border-radius: 6px;
+  font-weight: 600;
+}
+
+.btn-primary {
+  background-color: var(--slm-primary);
+  border-color: var(--slm-primary);
+}
+
+.btn-primary:hover,
+.btn-primary:focus {
+  background-color: var(--slm-primary-dark);
+  border-color: var(--slm-primary-dark);
+}
+
+.btn-success {
+  background-color: var(--slm-accent);
+  border-color: var(--slm-accent);
+}
+
+.form-control,
+.form-select,
+.input-group-text {
+  border-color: var(--slm-border);
+  border-radius: 6px;
+}
+
+.form-control:focus,
+.form-select:focus {
+  border-color: var(--slm-primary);
+  box-shadow: 0 0 0 0.2rem rgba(31, 111, 235, 0.12);
+}
+
+.table {
+  margin-bottom: 0;
+  vertical-align: middle;
+}
+
+.table thead th {
+  background: #f2f5f9;
+  border-bottom: 1px solid var(--slm-border);
+  color: #445064;
+  font-size: 0.78rem;
+  letter-spacing: 0;
+  text-transform: uppercase;
+}
+
+.table tbody tr {
+  transition: background-color 0.18s ease, box-shadow 0.18s ease;
+}
+
+.table tbody tr:hover {
+  background-color: #f8fbff;
+}
+
+.badge {
+  border-radius: 999px;
+  padding: 0.45rem 0.7rem;
+  font-weight: 700;
+}
+
+.empty-state {
+  color: var(--slm-muted);
+  padding: 2rem !important;
+}
+
+@media (max-width: 767.98px) {
+  .page-shell {
+    max-width: 100%;
+  }
+
+  .page-actions {
+    align-items: stretch !important;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+}

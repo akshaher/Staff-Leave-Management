@@ -1,1 +1,14 @@
-/* leave-details styles */
+.card {
+  max-width: 820px;
+}
+
+.card-header h3 {
+  color: var(--slm-text);
+  font-size: 1.35rem;
+  font-weight: 700;
+}
+
+.detail-label {
+  color: var(--slm-muted);
+  font-weight: 700;
+}

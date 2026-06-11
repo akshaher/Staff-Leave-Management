@@ -15,9 +15,4 @@ export class SidebarComponent implements OnInit {
     // Defaulting to 'HOD' for dummy testing if not set
     this.role = this.authService.getRole() || 'HOD';
   }
-
-  test(){
-    console.log("click");
-    
-  }
 }

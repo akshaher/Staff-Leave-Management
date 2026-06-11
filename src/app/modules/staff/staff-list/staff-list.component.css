@@ -1,1 +1,16 @@
-/* staff-list styles */
+.table-card {
+  border-radius: 8px;
+}
+
+td:last-child {
+  white-space: nowrap;
+}
+
+.page-link {
+  color: var(--slm-primary);
+}
+
+.page-item.active .page-link {
+  background-color: var(--slm-primary);
+  border-color: var(--slm-primary);
+}

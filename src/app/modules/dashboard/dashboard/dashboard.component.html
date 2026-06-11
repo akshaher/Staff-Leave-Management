@@ -1,12 +1,18 @@
-<div class="container-fluid">
-  <h3 class="mb-4">Dashboard</h3>
+<div class="page-shell">
+  <div class="d-flex justify-content-between align-items-start mb-4 page-actions">
+    <div>
+      <h3 class="page-title">Dashboard</h3>
+      <p class="page-kicker">A quick view of leave activity and team availability.</p>
+    </div>
+  </div>
 
   <!-- HOD Dashboard -->
 
-  <div *ngIf="role === 'HOD'" class="row">
+  <div *ngIf="role === 'HOD'" class="row g-3">
     <div class="col-md-4">
-      <div class="card shadow-sm">
-        <div class="card-body text-center">
+      <div class="card metric-card">
+        <div class="card-body">
+          <div class="metric-icon metric-primary"><i class="bi bi-people"></i></div>
           <h5>Total Staff Members</h5>
 
           <h2>
@@ -19,10 +25,11 @@
 
   <!-- Staff Dashboard -->
 
-  <div *ngIf="role === 'STAFF'" class="row">
+  <div *ngIf="role === 'STAFF'" class="row g-3">
     <div class="col-md-4">
-      <div class="card shadow-sm">
-        <div class="card-body text-center">
+      <div class="card metric-card">
+        <div class="card-body">
+          <div class="metric-icon metric-primary"><i class="bi bi-calendar-range"></i></div>
           <h5>Total Leaves</h5>
 
           <h2>
@@ -33,8 +40,9 @@
     </div>
 
     <div class="col-md-4">
-      <div class="card shadow-sm">
-        <div class="card-body text-center">
+      <div class="card metric-card">
+        <div class="card-body">
+          <div class="metric-icon metric-success"><i class="bi bi-check2-circle"></i></div>
           <h5>Approved</h5>
 
           <h2 class="text-success">
@@ -45,8 +53,9 @@
     </div>
 
     <div class="col-md-4">
-      <div class="card shadow-sm">
-        <div class="card-body text-center">
+      <div class="card metric-card">
+        <div class="card-body">
+          <div class="metric-icon metric-danger"><i class="bi bi-x-circle"></i></div>
           <h5>Rejected</h5>
 
           <h2 class="text-danger">

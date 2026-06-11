@@ -1,1 +1,9 @@
-/* apply-leave styles */
+.card {
+  max-width: 760px;
+}
+
+.card-header h3 {
+  color: var(--slm-text);
+  font-size: 1.35rem;
+  font-weight: 700;
+}

@@ -15,9 +15,10 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class RegisterComponent implements OnInit {
 
   registerForm!: FormGroup;
-
   submitted = false;
   showPassword = false;
+  loading:boolean=false;
+  loginError:boolean=false;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 
@@ -69,6 +70,7 @@ export class RegisterComponent implements OnInit {
     }
 
     this.registerForm.valueChanges.subscribe(value => {
+      
       const { password, ...formDatawithoutPassword } = value;
 
       localStorage.setItem('userData', JSON.stringify(formDatawithoutPassword))
@@ -86,10 +88,12 @@ export class RegisterComponent implements OnInit {
   onSubmit(): void {
 
     this.submitted = true;
+   
 
     if (this.registerForm.invalid) {
       return;
     }
+     this.loading=true;
 
     console.log(this.registerForm.value);
 
@@ -104,13 +108,24 @@ export class RegisterComponent implements OnInit {
 
     this.authService.register(payload).subscribe({
       next: (response) => {
+        this.loading=false;
         localStorage.setItem('token', response.token);
         localStorage.setItem('role', response.role)
         localStorage.setItem('user', JSON.stringify(response.user));
 
         this.router.navigate(['/dashboard']);
       }, error: (error) => {
+        if(error.error.message == "Email already exists"){
+          this.registerForm.get('email')?.setErrors({
+            emailExists : true
+          })
+
+        }
         console.log(error);
+        this.loginError=true;
+        this.loading=false;
+        this.loginError = error.error.message;
+
       }
     })
   }
