@@ -18,9 +18,9 @@ export class ApplyLeaveComponent implements OnInit {
     private router: Router
   ) {
     this.leaveForm = this.formBuilder.group({
-      fromDate: ['', Validators.required],
-      toDate: ['', Validators.required],
-      reason: ['', Validators.required]
+      fromDate: [''],
+      toDate: [''],
+      reason: ['']
     });
   }
 
