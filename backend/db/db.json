@@ -231,6 +231,14 @@
       "toDate": "2026-06-15",
       "reason": "Planned Leave",
       "status": "Pending"
+    },
+    {
+      "id": 1781184141403,
+      "staffId": 1781168188731,
+      "fromDate": "",
+      "toDate": "",
+      "reason": "",
+      "status": "Pending"
     }
   ]
 }

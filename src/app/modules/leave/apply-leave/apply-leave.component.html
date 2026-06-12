@@ -18,9 +18,12 @@
 
         <div class="mb-3">
           <label class="form-label">Leave To Date</label>
-          <input type="date" formControlName="toDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['toDate'].errors }" />
+          <input type="date" formControlName="toDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && (f['toDate'].errors || leaveForm.errors?.dateRange) }" />
           <div *ngIf="submitted && f['toDate'].errors" class="invalid-feedback">
             <div *ngIf="f['toDate'].errors['required']">To Date is required</div>
+          </div>
+          <div *ngIf="submitted && leaveForm.errors?.dateRange" class="invalid-feedback d-block">
+            To Date must be the same or after From Date
           </div>
         </div>
 

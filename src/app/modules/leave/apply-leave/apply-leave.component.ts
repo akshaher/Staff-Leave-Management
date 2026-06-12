@@ -3,6 +3,15 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LeaveService } from '../../../core/services/leave.service';
 
+function dateRangeValidator(formGroup: FormGroup) {
+  const from = formGroup.get('fromDate')?.value;
+  const to = formGroup.get('toDate')?.value;
+  if (from && to && new Date(to) < new Date(from)) {
+    return { dateRange: true };
+  }
+  return null;
+}
+
 @Component({
   selector: 'app-apply-leave',
   templateUrl: './apply-leave.component.html',
@@ -18,10 +27,10 @@ export class ApplyLeaveComponent implements OnInit {
     private router: Router
   ) {
     this.leaveForm = this.formBuilder.group({
-      fromDate: [''],
-      toDate: [''],
-      reason: ['']
-    });
+      fromDate: ['', Validators.required],
+      toDate: ['', Validators.required],
+      reason: ['', Validators.required]
+    }, { validators: dateRangeValidator });
   }
 
   ngOnInit(): void { }
