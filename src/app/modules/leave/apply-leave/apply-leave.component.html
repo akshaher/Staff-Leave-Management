@@ -8,23 +8,25 @@
     </div>
     <div class="card-body">
       <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
+        <div formGroupName="leaveDate"> 
         <div class="mb-3">
           <label class="form-label">Leave From Date</label>
-          <input type="date" formControlName="fromDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['fromDate'].errors }" />
-          <div *ngIf="submitted && f['fromDate'].errors" class="invalid-feedback">
-            <div *ngIf="f['fromDate'].errors['required']">From Date is required</div>
+          <input type="date" formControlName="fromDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && leaveForm.get('leaveDate.fromDate')?.errors?.['required'] }" />
+          <div *ngIf="submitted &&  leaveForm.get('leaveDate.fromDate')?.errors?.['required']" class="invalid-feedback">
+            <div *ngIf="leaveForm.get('leaveDate.fromDate')?.errors?.['required']">From Date is required</div>
           </div>
         </div>
 
         <div class="mb-3">
           <label class="form-label">Leave To Date</label>
-          <input type="date" formControlName="toDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && (f['toDate'].errors || leaveForm.errors?.dateRange) }" />
-          <div *ngIf="submitted && f['toDate'].errors" class="invalid-feedback">
-            <div *ngIf="f['toDate'].errors['required']">To Date is required</div>
+          <input type="date" formControlName="toDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && (leaveForm.get('leaveDate.toDate')?.errors || leaveForm.get('leaveDate')?.errors?.['dateRange']) }" />
+          <div *ngIf="submitted && leaveForm.get('leaveDate.toDate')?.errors" class="invalid-feedback">
+            <div *ngIf="leaveForm.get('leaveDate.toDate')?.errors?.['required']">To Date is required</div>
           </div>
-          <div *ngIf="submitted && leaveForm.errors?.dateRange" class="invalid-feedback d-block">
+          <div *ngIf="submitted && leaveForm.get('leaveDate')?.errors?.['dateRange']" class="invalid-feedback d-block">
             To Date must be the same or after From Date
           </div>
+        </div>
         </div>
 
         <div class="mb-3">

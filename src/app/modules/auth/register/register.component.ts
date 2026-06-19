@@ -49,6 +49,9 @@ export class RegisterComponent implements OnInit {
           Validators.email
         ]
       ],
+      department:[
+        '', [Validators.required]
+      ],
 
       password: [
         '',
@@ -103,15 +106,15 @@ export class RegisterComponent implements OnInit {
       mobileNumber: this.registerForm.value.mobileNumber,
       role: this.registerForm.value.role,
       email: this.registerForm.value.email,
+      department: this.registerForm.value.department,
       password: this.registerForm.value.password
     }
 
     this.authService.register(payload).subscribe({
       next: (response) => {
         this.loading=false;
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('role', response.role)
-        localStorage.setItem('user', JSON.stringify(response.user));
+        localStorage.setItem('accessToken', response.accessToken);
+        localStorage.setItem('refreshToken', response.refreshToken);
 
         this.router.navigate(['/dashboard']);
       }, error: (error) => {

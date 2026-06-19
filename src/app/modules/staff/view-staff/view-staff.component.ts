@@ -20,7 +20,10 @@ export class ViewStaffComponent implements OnInit {
     const id = this.route.snapshot.paramMap.get('id');
     if (id) {
       this.userService.getStaffById(id).subscribe({
-        next: (staff) => this.staffDetails = staff,
+        next: (staff) =>{ 
+          console.log(staff);
+          
+          this.staffDetails = staff},
         error: () => this.router.navigate(['/staff'])
       });
     } else {

@@ -1,64 +1,115 @@
 <div class="page-shell">
-  <div class="d-flex justify-content-between align-items-start mb-4 page-actions">
+  <div
+    class="d-flex justify-content-between align-items-start mb-4 page-actions"
+  >
     <div>
       <h2 class="page-title">Leave Management</h2>
-      <p class="page-kicker">Track requests, decisions, and leave history in one place.</p>
+      <p class="page-kicker">
+        Track requests, decisions, and leave history in one place.
+      </p>
     </div>
-    <button *ngIf="role === 'STAFF'" class="btn btn-primary" routerLink="/leave/apply">
+    <button
+      *ngIf="role === 'STAFF'"
+      class="btn btn-primary"
+      routerLink="/leave/apply"
+    >
       <i class="bi bi-plus-circle me-1"></i>
       Apply for New Leave
     </button>
   </div>
-  
+
   <div *ngIf="leaveList.length === 0" class="no-leave">
-          <i class="bi bi-inbox d-block fs-3 mb-2"></i>
-          No leave records found.
+    <i class="bi bi-inbox d-block fs-3 mb-2"></i>
+    No leave records found.
   </div>
 
-  <div  *ngIf="leaveList.length > 0" class="table-card bg-white overflow-hidden">
-  <div class="table-responsive">
-  <table class="table table-hover">
-    <thead>
-      <tr>
-        <th>Sr No.</th>
-        <th *ngIf="role === 'HOD'">Staff Name</th>
-        <th>From Date</th>
-        <th>To Date</th>
-        <th>Reason</th>
-        <th>Status</th>
-        <th>Action</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let leave of leaveList; let i = index">
-        <td>{{ i + 1 }}</td>
-        <td *ngIf="role === 'HOD'">{{ leave.staffName }}</td>
-        <td>{{ leave.fromDate | date }}</td>
-        <td>{{ leave.toDate | date}}</td>
-        <td>{{ leave.reason | titlecase}}</td>
-        <td>
-          <span class="badge" 
-                [ngClass]="{'bg-success': leave.status === 'Approved', 'bg-warning': leave.status === 'Pending', 'bg-danger': leave.status === 'Rejected'}">
-            {{ leave.status }}
-          </span>
-        </td>
-        <td>
-          <button class="btn btn-sm btn-outline-primary me-2" [routerLink]="['/leave/details', leave.id]">
-            <i class="bi bi-eye me-1"></i>View
-          </button>
-          <ng-container *ngIf="role === 'HOD' && leave.status === 'Pending'">
-            <button class="btn btn-sm btn-success me-2" (click)="updateStatus(leave, 'Approved')">
-              <i class="bi bi-check2 me-1"></i>Approve
-            </button>
-            <button class="btn btn-sm btn-danger" (click)="updateStatus(leave, 'Rejected')">
-              <i class="bi bi-x me-1"></i>Reject
-            </button>
-          </ng-container>
-        </td>
-      </tr>
-     
-    </tbody>
-  </table>
-  </div>
+  <div *ngIf="leaveList.length > 0" class="table-card bg-white overflow-hidden">
+    <div class="table-responsive">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Sr No.</th>
+            <th *ngIf="role === 'HOD'">Staff Name</th>
+            <th>From Date</th>
+            <th>To Date</th>
+            <th>Reason</th>
+            <th>Status</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let leave of leaveList; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td *ngIf="role === 'HOD'">{{ leave.staffId.fullName | splitName }}</td>
+            <td>{{ leave.fromDate | date }}</td>
+            <td>{{ leave.toDate | date }}</td>
+            <td>{{ leave.reason | titlecase }}</td>
+            <td>
+              <span
+                class="badge"
+                [ngClass]="{
+                  'bg-success': leave.status === 'Approved',
+                  'bg-warning': leave.status === 'Pending',
+                  'bg-danger': leave.status === 'Rejected'
+                }"
+              >
+                {{ leave.status }}
+              </span>
+            </td>
+            <td>
+              <button
+                class="btn btn-sm btn-outline-primary me-2"
+                [routerLink]="['/leave/details', leave._id]"
+              >
+                <i class="bi bi-eye me-1"></i>View
+              </button>
+
+              <ng-container
+                *ngIf="role === 'HOD' && leave.status === 'Pending'"
+              >
+                <button
+                  class="btn btn-sm btn-success me-2"
+                  (click)="updateStatus(leave, 'Approved')"
+                >
+                  <i class="bi bi-check2 me-1"></i>Approve
+                </button>
+                <button
+                  class="btn btn-sm btn-danger"
+                  (click)="updateStatus(leave, 'Rejected')"
+                >
+                  <i class="bi bi-x me-1"></i>Reject
+                </button>
+              </ng-container>
+              <ng-container>
+                <button
+                  *ngIf="role === 'STAFF' && leave.status === 'Pending'"
+                  class="btn btn-sm btn-outline-danger me-2"
+                  (click)="openDeleteModal(leave._id)"
+                >
+                  <i class="bi bi-trash me-1"></i>Delete
+                </button>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
   </div>
 </div>
+
+
+<app-confirm-modal
+[visible]="showDeleteModal"
+[title]="'Delete Leave'"
+[message]="'Are you sure want ot remove the applied leave request?'"
+[confirmButtonText]="'Delete'"
+[cancelButtonText]="'Cancel'"
+(confirmed)="confirmDelete()"
+(cancelled)="closeDeleteModal()">
+</app-confirm-modal>
+
+<app-toast
+[show]="showToast"
+[message]="toastMessage"
+[type]="toastType"
+></app-toast>

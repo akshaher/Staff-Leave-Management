@@ -55,6 +55,9 @@ export class StaffListComponent implements OnInit {
     if (confirm('Are you sure you want to delete this staff member?')) {
       this.userService.deleteStaff(id).subscribe({
         next: () => {
+          this.userService.getStaffList().subscribe({
+      next: (staff) => this.staffList = staff
+    });
           this.staffList = this.staffList.filter(s => s.id !== id);
           if (this.page > this.totalPages && this.totalPages > 0) {
             this.page = this.totalPages;

@@ -11,6 +11,12 @@ import { Subscription } from 'rxjs';
 export class LeaveListComponent implements OnInit, OnDestroy {
   leaveList: any[] = [];
   role: string | null = '';
+  showDeleteModal:boolean=false;
+  selectedLeaveId!: number;
+
+  showToast=false;
+  toastMessage = '';
+  toastType: string | undefined
   private leavesSubscription?: Subscription;
 
   constructor(
@@ -19,7 +25,8 @@ export class LeaveListComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    this.role = this.authService.getRole() || 'HOD';
+    this.role = this.authService.getUserRole();
+    
 
     this.leavesSubscription = this.leaveService.leaves$.subscribe({
       next: (leaves) => {
@@ -32,7 +39,52 @@ export class LeaveListComponent implements OnInit, OnDestroy {
   }
 
   updateStatus(leave: any, status: string) {
-    this.leaveService.updateLeaveStatus(leave.id, status).subscribe();
+    this.leaveService.updateLeaveStatus(leave._id, status).subscribe({
+      next: (response)=>{console.log(response);
+        
+        this.showNotification(`Leave ${status.toLowerCase()} successfully `, status.toLocaleLowerCase())
+      },
+      error: (err)=>{
+        this.showNotification('Something went wrong', 'rejected')
+        console.log(err);
+      }
+    });
+  }
+
+  openDeleteModal(id: number){
+    this.selectedLeaveId = id;
+    this.showDeleteModal =true;
+  }
+
+
+  confirmDelete(){
+    this.leaveService.deleteLeave(this.selectedLeaveId).subscribe({
+      next: (response)=>{  
+        this.leaveList = this.leaveList.filter(
+          leave => leave.id !== this.selectedLeaveId
+        );
+        this.showDeleteModal =false;
+      },
+      error: (err:any)=>{
+        console.log(err);
+        
+      }
+    })
+  }
+
+  closeDeleteModal(){
+    this.showDeleteModal =false;
+  }
+
+  showNotification( message : string, type: string){
+    this.toastMessage = message;
+    this.toastType = type;
+    this.showToast=true;
+
+    setTimeout(()=>{
+      this.showToast=false;
+    },3000)
+
   }
 
   ngOnDestroy(): void {

@@ -74,9 +74,10 @@ export class LoginComponent implements OnInit {
     this.authService.login(payload).subscribe({
       next: (response) => {
         this.loading = false;
-        localStorage.setItem('token', response.token);
-        localStorage.setItem('role', response.role);
-        localStorage.setItem('user', JSON.stringify(response.user))
+        console.log(response);
+        
+        localStorage.setItem('accessToken', response.accessToken);
+        localStorage.setItem('refreshToken', response.refreshToken);
         this.router.navigate(['/dashboard']);
       },
       error: (error) => {

@@ -5,13 +5,19 @@ import { SidebarComponent } from './components/sidebar/sidebar.component';
 import { SearchStaffPipe } from './pipes/search.pipe';
 import { SortStaffPipe } from './pipes/sort.pipe';
 import { RouterModule } from '@angular/router';
+import { ConfirmModalComponent } from './components/confirm-Modal/confirm-Modal.component';
+import { ToastComponent } from './components/Toast/toast.component';
+import { SplitNamePipe } from './pipes/split.pipe';
 
 @NgModule({
   declarations: [
     HeaderComponent,
     SidebarComponent,
     SearchStaffPipe,
-    SortStaffPipe
+    SortStaffPipe,
+    ConfirmModalComponent,
+    ToastComponent,
+    SplitNamePipe
   ],
   imports: [
     CommonModule,
@@ -22,6 +28,9 @@ import { RouterModule } from '@angular/router';
     SidebarComponent,
     SearchStaffPipe,
     SortStaffPipe,
+    ConfirmModalComponent,
+    ToastComponent,
+    SplitNamePipe,
     RouterModule
   ]
 })

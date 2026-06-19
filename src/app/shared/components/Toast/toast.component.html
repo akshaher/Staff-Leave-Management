@@ -1,0 +1,12 @@
+<div *ngIf="show" class="custom-toast" [ngClass]="{
+    'toast-approved' : type === 'approved',
+    'toast-rejected': type === 'rejected'
+}">
+<i class="bi" 
+[ngClass]="{ 
+    'bi-check-circle-fill' : type === 'approved',
+ 'bi-x-circle-fill': type === 'rejected'
+}"></i>
+
+{{message}}
+</div>

@@ -1,0 +1,136 @@
+<div class="container">
+  <!-- BAR CHART -->
+  <div>
+    <highcharts-chart
+      *ngIf="staffChartOptions"
+      [Highcharts]="Highcharts"
+      [options]="staffChartOptions"
+      style="width: 100%; height: 400px; display: block"
+    >
+    </highcharts-chart>
+  </div>
+
+  <!-- PIE CHART -->
+  <div style="margin-top: 30px">
+    <highcharts-chart
+      *ngIf="leaveChartOptions"
+      [Highcharts]="Highcharts"
+      [options]="leaveChartOptions"
+      style="width: 100%; height: 400px; display: block"
+    >
+    </highcharts-chart>
+  </div>
+
+  <!-- LINE CHART -->
+  <div style="margin-top: 30px">
+    <highcharts-chart
+      *ngIf="monthlyChartOptions"
+      [Highcharts]="Highcharts"
+      [options]="monthlyChartOptions"
+      style="width: 100%; height: 400px; display: block"
+    >
+    </highcharts-chart>
+  </div>
+</div>
+
+<!-- <div class="card">
+  <div class="card-header">
+    My Current Location
+  </div>
+
+  <div id="map"></div>
+</div> -->
+
+<ng-container *ngIf="users">
+  <div class="tracking-container">
+    <div class="tracking-header">
+      <h2>
+        <i class="bi bi-geo-alt-fill"></i>
+        Employee Location Tracking
+      </h2>
+
+      <p>Last known location of active employees</p>
+    </div>
+
+    <div class="tracking-card">
+      <table class="table tracking-table">
+        <thead>
+          <tr>
+            <th>
+              <i class="bi bi-person-fill me-2"></i>
+              Employee
+            </th>
+
+            <th>
+              <i class="bi bi-geo-alt-fill me-2"></i>
+              Current Location
+            </th>
+
+            <th>
+              <i class="bi bi-clock-history me-2"></i>
+              Last Seen
+            </th>
+
+            <th>
+              <i class="bi bi-wifi me-2"></i>
+              Status
+            </th>
+          </tr>
+        </thead>
+
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>
+              <div class="employee-info">
+                <div class="avatar">
+                  {{ user.fullName.charAt(0) }}
+                </div>
+
+                <span>
+                  {{ user.fullName }}
+                </span>
+              </div>
+            </td>
+
+            <td>
+              <div class="location-cell">
+                <i class="bi bi-geo-alt-fill text-danger"  *ngIf="user.areaName"></i>
+
+                <span>
+                  {{ user.areaName | slice: 0: 50 }}...
+                </span>
+              </div>
+            </td>
+
+            <td>
+              <div class="last-seen">
+                <i class="bi bi-clock" *ngIf="user.lastSeenAt"></i>
+
+                {{ user.lastSeenAt | date: "medium" }}
+              </div>
+            </td>
+
+            <td>
+              <span
+                class="status-badge"
+                [ngClass]="{
+                  online: isOnline(user.lastSeenAt),
+                  offline: !isOnline(user.lastSeenAt)
+                }"
+              >
+                <i
+                  class="bi"
+                  [ngClass]="{
+                    'bi-circle-fill': true
+                  }"
+                ></i>
+
+                {{ isOnline(user.lastSeenAt) ? "Online" : "Offline" }}
+              </span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</ng-container>

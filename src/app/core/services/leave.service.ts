@@ -34,7 +34,7 @@ export class LeaveService {
 
   getLeaveById(id: string): Observable<any> {
     return this.loadLeaves().pipe(
-      map((leaves) => leaves.find((leave) => String(leave.id) === String(id)))
+      map((leaves) => leaves.find((leave) => String(leave._id) === String(id)))
     );
   }
 
@@ -51,7 +51,7 @@ export class LeaveService {
     return this.http.patch<any>(`${this.baseUrl}/leaves/${id}/status`, { status }).pipe(
       tap((updatedLeave) => {
         const leaves = this.leavesSubject.value.map((leave) =>
-          String(leave.id) === String(updatedLeave.id) ? updatedLeave : leave
+          String(leave._id) === String(updatedLeave._id) ? updatedLeave : leave
         );
 
         this.leavesSubject.next(leaves);
@@ -62,6 +62,14 @@ export class LeaveService {
   refreshLeaves(): Observable<any[]> {
     this.loaded = false;
     return this.loadLeaves();
+  }
+
+  approveLeave(leaveId: number){
+   return this.http.post(`/api/leave/${leaveId}/approve`, {})
+  }
+
+  deleteLeave(id:number){
+    return this.http.delete(`${this.baseUrl}/leaves/${id}`);
   }
 
   private loadLeaves(): Observable<any[]> {

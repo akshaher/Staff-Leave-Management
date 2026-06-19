@@ -182,38 +182,6 @@
       "fromDate": "2025-01-10",
       "toDate": "2025-01-12",
       "reason": "Medical Leave",
-      "status": "Pending"
-    },
-    {
-      "id": 1780904398741,
-      "staffId": 1780904357435,
-      "fromDate": "2026-06-08",
-      "toDate": "2026-06-09",
-      "reason": "Personal Work",
-      "status": "Approved"
-    },
-    {
-      "id": 1780904659676,
-      "staffId": 1780904357435,
-      "fromDate": "2026-06-09",
-      "toDate": "2026-06-10",
-      "reason": "Sick Leave",
-      "status": "Rejected"
-    },
-    {
-      "id": 1780918108832,
-      "staffId": 1780904357435,
-      "fromDate": "2026-06-03",
-      "toDate": "2026-06-04",
-      "reason": "learning how to apply the leave ",
-      "status": "Approved"
-    },
-    {
-      "id": 1780918139850,
-      "staffId": 1780904357435,
-      "fromDate": "2026-06-11",
-      "toDate": "2026-06-12",
-      "reason": "Is it really working ?",
       "status": "Rejected"
     },
     {
@@ -222,7 +190,7 @@
       "fromDate": "2026-06-11",
       "toDate": "2026-06-12",
       "reason": "Sick Leave",
-      "status": "Pending"
+      "status": "Rejected"
     },
     {
       "id": 1781176461517,
@@ -230,15 +198,55 @@
       "fromDate": "2026-06-13",
       "toDate": "2026-06-15",
       "reason": "Planned Leave",
-      "status": "Pending"
+      "status": "Rejected"
     },
     {
-      "id": 1781184141403,
-      "staffId": 1781168188731,
-      "fromDate": "",
-      "toDate": "",
-      "reason": "",
-      "status": "Pending"
+      "id": 1781604959268,
+      "staffId": 1781166354068,
+      "fromDate": "2026-06-16",
+      "toDate": "2026-06-18",
+      "reason": "Earned Leave",
+      "status": "Rejected"
+    },
+    {
+      "id": 1781607127780,
+      "staffId": 1781166354068,
+      "fromDate": "2026-06-16",
+      "toDate": "2026-06-16",
+      "reason": "Emergency Leave",
+      "status": "Approved"
+    },
+    {
+      "id": 1781608185877,
+      "staffId": 1781166354068,
+      "fromDate": "2026-06-16",
+      "toDate": "2026-06-17",
+      "reason": "Family Event",
+      "status": "Approved"
+    },
+    {
+      "id": 1781672350640,
+      "staffId": 1781166354068,
+      "fromDate": "2026-06-17",
+      "toDate": "2026-06-18",
+      "reason": "Sick Leave",
+      "status": "Approved"
+    },
+    {
+      "id": 1781672984469,
+      "staffId": 1781166354068,
+      "fromDate": "2026-06-18",
+      "toDate": "2026-06-19",
+      "reason": "sadsa",
+      "status": "Rejected"
+    },
+    {
+      "id": 1781673661717,
+      "staffId": 1781166354068,
+      "fromDate": "2026-06-18",
+      "toDate": "2026-06-19",
+      "reason": "sas",
+      "status": "Rejected"
     }
   ]
 }

@@ -19,9 +19,8 @@ export class AddStaffComponent implements OnInit {
   ) {
     this.staffForm = this.formBuilder.group({
       fullName: ['', Validators.required],
-      username: ['', Validators.required],
       email: ['', [Validators.required, Validators.email]],
-      mobile: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
+      mobileNumber: ['', [Validators.required, Validators.pattern('^[0-9]{10}$')]],
       department: ['', Validators.required]
     });
   }

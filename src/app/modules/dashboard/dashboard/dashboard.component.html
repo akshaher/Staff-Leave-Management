@@ -39,6 +39,7 @@
       </div>
     </div>
 
+
     <div class="col-md-4">
       <div class="card metric-card">
         <div class="card-body">
@@ -64,5 +65,10 @@
         </div>
       </div>
     </div>
+  </div>
+  
+
+  <div *ngIf="role !== 'STAFF' && role !== 'HOD'">
+      <p>Role Not found</p>
   </div>
 </div>
