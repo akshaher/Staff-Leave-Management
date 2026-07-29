@@ -11,6 +11,7 @@ const routes: Routes = [
       { path: 'dashboard', loadChildren: () => import('./modules/dashboard/dashboard.module').then(m => m.DashboardModule) },
       { path: 'staff', loadChildren: () => import('./modules/staff/staff.module').then(m => m.StaffModule) },
       { path: 'leave', loadChildren: () => import('./modules/leave/leave.module').then(m => m.LeaveModule) },
+      {path: 'products', loadChildren:()=> import ('./modules/products/product.module').then(module => module.ProductModule)},
       { path: '', redirectTo: 'dashboard', pathMatch: 'full' }
     ]
   },
