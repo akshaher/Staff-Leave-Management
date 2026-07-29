@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {
-  FormBuilder,
-  FormGroup,
+  UntypedFormBuilder,
+  UntypedFormGroup,
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -16,7 +16,7 @@ import { ForkService } from 'src/app/core/services/forkJoin.service';
 })
 export class LoginComponent implements OnInit {
 
-  loginForm!: FormGroup;
+  loginForm!: UntypedFormGroup;
   submitted = false;
   loading = false;
   showPassword = false;
@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   name$=this.authService.name$;
 
   constructor(
-    private fb: FormBuilder,
+    private fb: UntypedFormBuilder,
     private authService: AuthService,
     private router: Router,
     private fork:ForkService 

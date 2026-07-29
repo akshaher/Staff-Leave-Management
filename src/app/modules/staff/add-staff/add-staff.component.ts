@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { UserService } from '../../../core/services/user.service';
 
@@ -9,11 +9,11 @@ import { UserService } from '../../../core/services/user.service';
   styleUrls: ['./add-staff.component.css']
 })
 export class AddStaffComponent implements OnInit {
-  staffForm: FormGroup;
+  staffForm: UntypedFormGroup;
   submitted = false;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private userService: UserService,
     private router: Router
   ) {

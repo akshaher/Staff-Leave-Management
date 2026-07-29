@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { UntypedFormBuilder, UntypedFormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { LeaveService } from '../../../core/services/leave.service';
 
-function dateRangeValidator(formGroup: FormGroup) {
+function dateRangeValidator(formGroup: UntypedFormGroup) {
   const from = formGroup.get('fromDate')?.value;
   const to = formGroup.get('toDate')?.value;
   console.log(from,"called");
@@ -20,11 +20,11 @@ function dateRangeValidator(formGroup: FormGroup) {
   styleUrls: ['./apply-leave.component.css']
 })
 export class ApplyLeaveComponent implements OnInit {
-  leaveForm: FormGroup;
+  leaveForm: UntypedFormGroup;
   submitted = false;
 
   constructor(
-    private formBuilder: FormBuilder,
+    private formBuilder: UntypedFormBuilder,
     private leaveService: LeaveService,
     private router: Router
   ) {
