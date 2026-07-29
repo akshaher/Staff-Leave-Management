@@ -9,7 +9,6 @@ import { ProductRoutingModule } from './product-routing.module';
 import { ProductListComponent } from './components/product-list/product-list.component';
 
 import { SharedModule } from '../../shared/shared.module';
-import {ScrollingModule} from '@angular/cdk/scrolling';
 
 @NgModule({
   declarations: [
@@ -20,8 +19,7 @@ import {ScrollingModule} from '@angular/cdk/scrolling';
     FormsModule,
     ReactiveFormsModule,
     SharedModule,
-    ProductRoutingModule,
-    ScrollingModule
+    ProductRoutingModule
   ]
 })
 export class ProductModule { }

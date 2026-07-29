@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/core/services/auth.service';
 export class HeaderComponent implements OnInit {
 
   fullName: any;
+  name$=this.authService.name$;
 
   constructor(
     private router: Router,
@@ -18,6 +19,10 @@ export class HeaderComponent implements OnInit {
 
   ngOnInit(): void {
     this.fullName = this.authService.getUserName();
+    this.authService.name$.subscribe((Response)=>{
+      console.log(Response);
+      
+    })
 
   }
 

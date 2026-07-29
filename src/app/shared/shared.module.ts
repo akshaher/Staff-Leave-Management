@@ -8,6 +8,7 @@ import { RouterModule } from '@angular/router';
 import { ConfirmModalComponent } from './components/confirm-Modal/confirm-Modal.component';
 import { ToastComponent } from './components/Toast/toast.component';
 import { SplitNamePipe } from './pipes/split.pipe';
+import { ProductImageDirective } from './directives/product-image.directive';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { SplitNamePipe } from './pipes/split.pipe';
     SortStaffPipe,
     ConfirmModalComponent,
     ToastComponent,
-    SplitNamePipe
+    SplitNamePipe,
+    ProductImageDirective
   ],
   imports: [
     CommonModule,
@@ -31,7 +33,8 @@ import { SplitNamePipe } from './pipes/split.pipe';
     ConfirmModalComponent,
     ToastComponent,
     SplitNamePipe,
-    RouterModule
+    RouterModule,
+    ProductImageDirective
   ]
 })
 export class SharedModule { }

@@ -19,10 +19,12 @@ export class RegisterComponent implements OnInit {
   showPassword = false;
   loading:boolean=false;
   loginError:boolean=false;
+  name$=this.authService.name$;
 
   constructor(private fb: FormBuilder, private authService: AuthService, private router: Router) { }
 
   ngOnInit(): void {
+
     this.registerForm = this.fb.group({
       fullName: [
         '',

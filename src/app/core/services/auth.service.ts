@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { BehaviorSubject, Observable, Subject } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { jwtDecode } from 'jwt-decode';
 import { windowWhen } from 'rxjs/operators';
@@ -9,7 +9,14 @@ import { windowWhen } from 'rxjs/operators';
 export class AuthService {
     private baseUrl = environment.apiUrl;
 
+     currentUserBS= new Subject<string | null>()    
+    name$=this.currentUserBS.asObservable();
+
     constructor(private http: HttpClient) { }
+
+    updateName(name:string){
+        this.currentUserBS.next(name);
+    }
 
     register(userData: any): Observable<any> {
         return this.http.post(`${this.baseUrl}/signup`, userData);

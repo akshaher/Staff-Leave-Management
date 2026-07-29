@@ -5,7 +5,9 @@ import {
   Validators
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
+import { ForkService } from 'src/app/core/services/forkJoin.service';
 
 @Component({
   selector: 'app-login',
@@ -19,15 +21,22 @@ export class LoginComponent implements OnInit {
   loading = false;
   showPassword = false;
   loginError = '';
+  userName:any='';
+  name$=this.authService.name$;
 
   constructor(
     private fb: FormBuilder,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private fork:ForkService 
   ) { }
 
-  ngOnInit(): void {
 
+  ngOnInit(): void {
+    this.fork.getDashboardData().subscribe((res)=>{
+      console.log(res);
+      
+    })
     this.loginForm = this.fb.group({
 
       email: [
@@ -57,7 +66,17 @@ export class LoginComponent implements OnInit {
     this.showPassword = !this.showPassword;
   }
 
+  updateName(){
+
+    
+    this.authService.updateName(this.userName);
+
+
+    console.log("name:", this.userName);
+  }
+
   onSubmit(): void {
+    // this.authService.updateName(this.name);
     this.submitted = true;
     this.loginError = '';
     if (this.loginForm.invalid) {

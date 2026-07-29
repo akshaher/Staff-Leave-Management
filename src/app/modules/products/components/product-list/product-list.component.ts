@@ -1,20 +1,28 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, inject, OnInit } from '@angular/core';
 import { HostListener } from '@angular/core';
 import { Product } from '../../models/product.model';
 import { ProductService } from '../../services/product.service';
+import { Subject } from 'rxjs';
+import {
+  debounceTime,
+  distinctUntilChanged,
+  switchMap,
+  tap,
+} from 'rxjs/operators';
+import { ProductQuery } from 'src/app/core/models/product-query.model';
+import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 
 @Component({
   selector: 'app-product-list',
   templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css']
+  styleUrls: ['./product-list.component.css'],
 })
 export class ProductListComponent implements OnInit {
-
   products: Product[] = [];
 
-  filteredProducts: Product[] = [];
+  websiteURL:any='';
 
-  searchText = '';
+  filteredProducts: Product[] = [];
 
   isLoading = false;
 
@@ -29,112 +37,142 @@ export class ProductListComponent implements OnInit {
   isLoadingMore = false;
 
   totalProducts = 0;
+  brands:string[]=[];
+  categories:string[]=[];
 
-  constructor(
-    private productService: ProductService
-  ) {}
+  query: ProductQuery={
+    page: 1, limit: 20, search:'', sort:'', brand:'', category:''
+  }
+
+  private searchSubject = new Subject<string>();
+  private domsanitizer=inject(DomSanitizer);
+
+  constructor(private productService: ProductService,) {
+    this.websiteURL=this.domsanitizer.bypassSecurityTrustResourceUrl('https://angular.dev/update-guide?v=12.0-17.0&l=1');
+  }
 
   ngOnInit(): void {
-
     this.loadProducts();
+    this.loadFilters();
 
+    this.searchSubject
+      .pipe(
+        debounceTime(500),
+
+        distinctUntilChanged(),
+
+        tap(() => {
+            this.resetProducts();
+        }),
+
+        switchMap((search) => {
+          this.query.search = search;
+          return this.productService.getProducts(
+           this.query
+          );
+        }),
+      )
+      .subscribe({
+        next: (response) => {
+          this.products = response.data;
+          this.filteredProducts = [...this.products];
+          this.totalProducts=response.total;
+          this.hasMore = response.hasMore;
+        },
+
+        error: (err) => {
+          console.error(err);
+        },
+      });
   }
 
   @HostListener('window:scroll', [])
+  onWindowScroll(): void {
+    const scrollPosition = window.innerHeight + window.scrollY;
 
-onWindowScroll(): void {
+    const documentHeight = document.documentElement.scrollHeight;
 
-  const scrollPosition =
-    window.innerHeight + window.scrollY;
+    if (
+      scrollPosition >= documentHeight - 200 &&
+      !this.isLoadingMore &&
+      this.hasMore
+    ) {
+      this.query.page++;
 
-  const documentHeight =
-    document.documentElement.scrollHeight;
+      this.loadProducts();
+    }
+  }
 
-  if (
-    scrollPosition >= documentHeight - 200 &&
-    !this.isLoadingMore &&
-    this.hasMore
-  ) {
+  trackByProductId(index:number, product:any){
+    console.log(product.id,'TrackBy')
+    return product.id
+  }
 
-    this.page++;
+  onSearch(): void {
+    this.searchSubject.next(this.query.search);
+  }
 
+  onSortChange() {
+    this.resetProducts();
     this.loadProducts();
-
   }
 
-}
-
-loadProducts(): void {
-
-  if (!this.hasMore) {
-    return;
+  onFilterChange(){
+    this.resetProducts();
+    this.loadProducts();
   }
 
-  if (this.page === 1) {
-    this.isLoading = true;
-  } else {
-    this.isLoadingMore = true;
+  private resetProducts(){
+    this.query.page=1;
+    this.products=[];
+    this.filteredProducts=[];
+    this.hasMore=true;
   }
 
-  this.productService
-    .getProducts(this.page, this.limit)
-    .subscribe({
+  loadFilters(){
+    this.productService.getProductFilters().subscribe({
+        next: (response)=>{
+            this.brands=response.data.brands;
+            this.categories=response.data.categories;
+        }
+    })
+  }
 
-      next: (response) => {
-
-        this.products = [
-          ...this.products,
-          ...response.data
-        ];
-
-        this.filteredProducts = [...this.products];
-
-        this.totalProducts = response.total;
-
-        this.hasMore = response.hasMore;
-
-        this.isLoading = false;
-
-        this.isLoadingMore = false;
-
-      },
-
-      error: () => {
-
-        this.isLoading = false;
-
-        this.isLoadingMore = false;
-
-      }
-
-    });
-
-}
-
-  searchProducts(): void {
-
-    const search = this.searchText
-      .trim()
-      .toLowerCase();
-
-    if (!search) {
-
-      this.filteredProducts = this.products;
-
+  loadProducts(): void {
+    if (!this.hasMore) {
       return;
-
     }
 
-    this.filteredProducts = this.products.filter(product =>
+    if (this.query.page === 1) {
+      this.isLoading = true;
+    } else {
+      this.isLoadingMore = true;
+    }
 
-      product.name.toLowerCase().includes(search) ||
+    this.productService
+      .getProducts(this.query)
+      .subscribe({
+        next: (response: { data: any; total: number; hasMore: boolean; }) => {
+        console.log(response);
+          this.products = [...this.products, ...response.data];
+          
+          this.filteredProducts = [...this.products];
+        
 
-      product.brand.toLowerCase().includes(search) ||
+          this.totalProducts = response.total;
 
-      product.category.toLowerCase().includes(search)
+          this.hasMore = response.hasMore;
 
-    );
+          this.isLoading = false;
 
+          this.isLoadingMore = false;
+        },
+
+        error: () => {
+          this.isLoading = false;
+
+          this.isLoadingMore = false;
+        },
+      });
   }
-
 }
