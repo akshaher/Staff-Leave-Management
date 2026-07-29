@@ -8,6 +8,7 @@
 /bazel-out
 
 .env
+.angular
 
 /backend/node_modules
 # dependencies
