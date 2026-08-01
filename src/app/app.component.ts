@@ -9,8 +9,4 @@ export class AppComponent {
  protected   title = 'staff-leave-management';
  role:string | null='';
 
- ngOnInit(){
-  console.log("AppComponent Initialized");
-  this.role= localStorage.getItem('role');
- }
 }
