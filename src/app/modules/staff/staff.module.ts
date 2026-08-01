@@ -6,18 +6,17 @@ import { StaffRoutingModule } from './staff-routing.module';
 import { StaffListComponent } from './staff-list/staff-list.component';
 import { AddStaffComponent } from './add-staff/add-staff.component';
 import { ViewStaffComponent } from './view-staff/view-staff.component';
-import { SharedModule } from '../../shared/shared.module';
+
 
 @NgModule({
     imports: [
-        CommonModule,
-        StaffRoutingModule,
-        ReactiveFormsModule,
-        FormsModule,
-        SharedModule,
-        StaffListComponent,
-        AddStaffComponent,
-        ViewStaffComponent
-    ]
+    CommonModule,
+    StaffRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
+    StaffListComponent,
+    AddStaffComponent,
+    ViewStaffComponent
+]
 })
 export class StaffModule { }

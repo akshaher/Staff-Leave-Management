@@ -8,16 +8,15 @@ import { ProductRoutingModule } from './product-routing.module';
 
 import { ProductListComponent } from './components/product-list/product-list.component';
 
-import { SharedModule } from '../../shared/shared.module';
+
 
 @NgModule({
     imports: [
-        CommonModule,
-        FormsModule,
-        ReactiveFormsModule,
-        SharedModule,
-        ProductRoutingModule,
-        ProductListComponent
-    ]
+    CommonModule,
+    FormsModule,
+    ReactiveFormsModule,
+    ProductRoutingModule,
+    ProductListComponent
+]
 })
 export class ProductModule { }

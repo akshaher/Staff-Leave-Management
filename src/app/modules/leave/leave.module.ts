@@ -7,17 +7,16 @@ import { LeaveListComponent } from './leave-list/leave-list.component';
 import { ApplyLeaveComponent } from './apply-leave/apply-leave.component';
 import { LeaveDetailsComponent } from './leave-details/leave-details.component';
 import { ConfirmModalComponent } from 'src/app/shared/components/confirm-Modal/confirm-Modal.component';
-import { SharedModule } from 'src/app/shared/shared.module';
+
 
 @NgModule({
     imports: [
-        CommonModule,
-        LeaveRoutingModule,
-        ReactiveFormsModule,
-        SharedModule,
-        LeaveListComponent,
-        ApplyLeaveComponent,
-        LeaveDetailsComponent
-    ]
+    CommonModule,
+    LeaveRoutingModule,
+    ReactiveFormsModule,
+    LeaveListComponent,
+    ApplyLeaveComponent,
+    LeaveDetailsComponent
+]
 })
 export class LeaveModule { }
