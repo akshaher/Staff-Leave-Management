@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent implements OnInit {
+export class AppComponent implements OnChanges, OnInit {
  protected   title = 'staff-leave-management';
  role:string | null='';
 
@@ -13,4 +13,8 @@ export class AppComponent implements OnInit {
  ngOnInit(){
 
  }
+ ngOnChanges(){
+
+ }
+
 }
