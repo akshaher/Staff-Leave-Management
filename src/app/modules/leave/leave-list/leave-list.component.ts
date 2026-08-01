@@ -2,11 +2,18 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { LeaveService } from '../../../core/services/leave.service';
 import { AuthService } from '../../../core/services/auth.service';
 import { Subscription } from 'rxjs';
+import { SplitNamePipe } from '../../../shared/pipes/split.pipe';
+import { ToastComponent } from '../../../shared/components/Toast/toast.component';
+import { ConfirmModalComponent } from '../../../shared/components/confirm-Modal/confirm-Modal.component';
+import { RouterLink } from '@angular/router';
+import { NgIf, NgFor, NgClass, TitleCasePipe, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-leave-list',
-  templateUrl: './leave-list.component.html',
-  styleUrls: ['./leave-list.component.css']
+    selector: 'app-leave-list',
+    templateUrl: './leave-list.component.html',
+    styleUrls: ['./leave-list.component.css'],
+    standalone: true,
+    imports: [NgIf, RouterLink, NgFor, NgClass, ConfirmModalComponent, ToastComponent, TitleCasePipe, DatePipe, SplitNamePipe]
 })
 export class LeaveListComponent implements OnInit, OnDestroy {
   leaveList: any[] = [];

@@ -9,17 +9,15 @@ import { ViewStaffComponent } from './view-staff/view-staff.component';
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    StaffListComponent,
-    AddStaffComponent,
-    ViewStaffComponent
-  ],
-  imports: [
-    CommonModule,
-    StaffRoutingModule,
-    ReactiveFormsModule,
-    FormsModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        StaffRoutingModule,
+        ReactiveFormsModule,
+        FormsModule,
+        SharedModule,
+        StaffListComponent,
+        AddStaffComponent,
+        ViewStaffComponent
+    ]
 })
 export class StaffModule { }

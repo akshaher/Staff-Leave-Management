@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../../core/services/auth.service';
+import { NgIf } from '@angular/common';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
-  selector: 'app-sidebar',
-  templateUrl: './sidebar.component.html',
-  styleUrls: ['./sidebar.component.css']
+    selector: 'app-sidebar',
+    templateUrl: './sidebar.component.html',
+    styleUrls: ['./sidebar.component.css'],
+    standalone: true,
+    imports: [RouterLink, RouterLinkActive, NgIf]
 })
 export class SidebarComponent implements OnInit {
   role: string | null = '';

@@ -11,30 +11,28 @@ import { SplitNamePipe } from './pipes/split.pipe';
 import { ProductImageDirective } from './directives/product-image.directive';
 
 @NgModule({
-  declarations: [
-    HeaderComponent,
-    SidebarComponent,
-    SearchStaffPipe,
-    SortStaffPipe,
-    ConfirmModalComponent,
-    ToastComponent,
-    SplitNamePipe,
-    ProductImageDirective
-  ],
-  imports: [
-    CommonModule,
-    RouterModule
-  ],
-  exports: [
-    HeaderComponent,
-    SidebarComponent,
-    SearchStaffPipe,
-    SortStaffPipe,
-    ConfirmModalComponent,
-    ToastComponent,
-    SplitNamePipe,
-    RouterModule,
-    ProductImageDirective
-  ]
+    imports: [
+        CommonModule,
+        RouterModule,
+        HeaderComponent,
+        SidebarComponent,
+        SearchStaffPipe,
+        SortStaffPipe,
+        ConfirmModalComponent,
+        ToastComponent,
+        SplitNamePipe,
+        ProductImageDirective
+    ],
+    exports: [
+        HeaderComponent,
+        SidebarComponent,
+        SearchStaffPipe,
+        SortStaffPipe,
+        ConfirmModalComponent,
+        ToastComponent,
+        SplitNamePipe,
+        RouterModule,
+        ProductImageDirective
+    ]
 })
 export class SharedModule { }

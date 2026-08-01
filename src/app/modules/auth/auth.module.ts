@@ -9,16 +9,14 @@ import { HeaderComponent } from 'src/app/shared/components/header/header.compone
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [
-    LoginComponent,
-    RegisterComponent
-  ],
-  imports: [
-    CommonModule,
-    AuthRoutingModule,
-    ReactiveFormsModule,
-    SharedModule,
-    FormsModule
-  ]
+    imports: [
+        CommonModule,
+        AuthRoutingModule,
+        ReactiveFormsModule,
+        SharedModule,
+        FormsModule,
+        LoginComponent,
+        RegisterComponent
+    ]
 })
 export class AuthModule { }

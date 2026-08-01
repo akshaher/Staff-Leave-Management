@@ -1,6 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'sortStaff' })
+@Pipe({
+    name: 'sortStaff',
+    standalone: true
+})
 export class SortStaffPipe implements PipeTransform {
   transform(staffList: any[]): any[] {
     if (!Array.isArray(staffList)) {

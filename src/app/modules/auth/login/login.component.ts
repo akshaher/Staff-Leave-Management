@@ -1,18 +1,17 @@
 import { Component, OnInit } from '@angular/core';
-import {
-  UntypedFormBuilder,
-  UntypedFormGroup,
-  Validators
-} from '@angular/forms';
-import { Router } from '@angular/router';
+import { UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { Router, RouterLink } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ForkService } from 'src/app/core/services/forkJoin.service';
+import { NgIf, NgClass } from '@angular/common';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+    selector: 'app-login',
+    templateUrl: './login.component.html',
+    styleUrls: ['./login.component.css'],
+    standalone: true,
+    imports: [ReactiveFormsModule, NgIf, NgClass, RouterLink]
 })
 export class LoginComponent implements OnInit {
 

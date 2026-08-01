@@ -10,16 +10,14 @@ import { ConfirmModalComponent } from 'src/app/shared/components/confirm-Modal/c
 import { SharedModule } from 'src/app/shared/shared.module';
 
 @NgModule({
-  declarations: [
-    LeaveListComponent,
-    ApplyLeaveComponent,
-    LeaveDetailsComponent
-  ],
-  imports: [
-    CommonModule,
-    LeaveRoutingModule,
-    ReactiveFormsModule,
-    SharedModule
-  ]
+    imports: [
+        CommonModule,
+        LeaveRoutingModule,
+        ReactiveFormsModule,
+        SharedModule,
+        LeaveListComponent,
+        ApplyLeaveComponent,
+        LeaveDetailsComponent
+    ]
 })
 export class LeaveModule { }

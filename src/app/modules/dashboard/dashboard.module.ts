@@ -7,14 +7,12 @@ import { HighchartsChartModule } from 'highcharts-angular';
 import { AdminDashboardComponent } from './admin-dashboard/admin-dashboard.component';
 
 @NgModule({
-  declarations: [
-    DashboardComponent,
-    AdminDashboardComponent
-  ],
-  imports: [
-    CommonModule,
-    DashboardRoutingModule,
-    HighchartsChartModule
-  ]
+    imports: [
+        CommonModule,
+        DashboardRoutingModule,
+        HighchartsChartModule,
+        DashboardComponent,
+        AdminDashboardComponent
+    ]
 })
 export class DashboardModule { }

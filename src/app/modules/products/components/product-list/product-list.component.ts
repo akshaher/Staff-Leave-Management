@@ -11,11 +11,24 @@ import {
 } from 'rxjs/operators';
 import { ProductQuery } from 'src/app/core/models/product-query.model';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { ProductImageDirective } from '../../../../shared/directives/product-image.directive';
+import { NgFor, NgIf, NgClass, DecimalPipe } from '@angular/common';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
-  selector: 'app-product-list',
-  templateUrl: './product-list.component.html',
-  styleUrls: ['./product-list.component.css'],
+    selector: 'app-product-list',
+    templateUrl: './product-list.component.html',
+    styleUrls: ['./product-list.component.css'],
+    standalone: true,
+    imports: [
+        ReactiveFormsModule,
+        FormsModule,
+        NgFor,
+        NgIf,
+        ProductImageDirective,
+        NgClass,
+        DecimalPipe,
+    ],
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];

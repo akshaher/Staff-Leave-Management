@@ -11,19 +11,17 @@ import { CoreModule } from './core/core.module';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    MainLayoutComponent,
-    AuthLayoutComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    SharedModule,
-    CoreModule,
-    HttpClientModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+    declarations: [AppComponent],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        SharedModule,
+        CoreModule,
+        HttpClientModule,
+        MainLayoutComponent,
+        AuthLayoutComponent
+    ],
+    providers: [],
+    bootstrap: [AppComponent]
 })
 export class AppModule { }

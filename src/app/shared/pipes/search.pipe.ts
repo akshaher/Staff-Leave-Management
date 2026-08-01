@@ -1,6 +1,9 @@
 import { Pipe, PipeTransform } from '@angular/core';
 
-@Pipe({ name: 'searchStaff' })
+@Pipe({
+    name: 'searchStaff',
+    standalone: true
+})
 export class SearchStaffPipe implements PipeTransform {
   transform(staffList: any[], searchText: string): any[] {
     if (!Array.isArray(staffList)) {

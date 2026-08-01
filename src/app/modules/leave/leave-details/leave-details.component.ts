@@ -1,11 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { LeaveService } from '../../../core/services/leave.service';
+import { NgIf, NgClass, DatePipe } from '@angular/common';
 
 @Component({
-  selector: 'app-leave-details',
-  templateUrl: './leave-details.component.html',
-  styleUrls: ['./leave-details.component.css']
+    selector: 'app-leave-details',
+    templateUrl: './leave-details.component.html',
+    styleUrls: ['./leave-details.component.css'],
+    standalone: true,
+    imports: [NgIf, RouterLink, NgClass, DatePipe]
 })
 export class LeaveDetailsComponent implements OnInit {
   leaveDetails: any;

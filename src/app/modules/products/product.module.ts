@@ -11,15 +11,13 @@ import { ProductListComponent } from './components/product-list/product-list.com
 import { SharedModule } from '../../shared/shared.module';
 
 @NgModule({
-  declarations: [
-    ProductListComponent
-  ],
-  imports: [
-    CommonModule,
-    FormsModule,
-    ReactiveFormsModule,
-    SharedModule,
-    ProductRoutingModule
-  ]
+    imports: [
+        CommonModule,
+        FormsModule,
+        ReactiveFormsModule,
+        SharedModule,
+        ProductRoutingModule,
+        ProductListComponent
+    ]
 })
 export class ProductModule { }
