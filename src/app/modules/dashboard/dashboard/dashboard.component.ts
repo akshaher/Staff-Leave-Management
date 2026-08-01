@@ -34,6 +34,7 @@ export class DashboardComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    console.log("Dashboard Initialized");
     this.role = this.authService.getUserRole();
     this.startLocationTracking();
 
