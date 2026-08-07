@@ -1,13 +1,11 @@
 import { enableProdMode, importProvidersFrom } from '@angular/core';
-import { platformBrowserDynamic } from '@angular/platform-browser-dynamic';
-
-
 import { environment } from './environments/environment';
 import { AppComponent } from './app/app.component';
 import { withInterceptorsFromDi, provideHttpClient } from '@angular/common/http';
 import { CoreModule } from './app/core/core.module';
-import { AppRoutingModule } from './app/app-routing.module';
 import { BrowserModule, bootstrapApplication } from '@angular/platform-browser';
+import { provideRouter } from '@angular/router';
+import { routes } from './app/app-routing.module';
 
 if (environment.production) {
   enableProdMode();
@@ -15,7 +13,8 @@ if (environment.production) {
 
 bootstrapApplication(AppComponent, {
     providers: [
-        importProvidersFrom(BrowserModule, AppRoutingModule, CoreModule),
+        importProvidersFrom(BrowserModule, CoreModule),
+        provideRouter(routes),
         provideHttpClient(withInterceptorsFromDi())
     ]
 })

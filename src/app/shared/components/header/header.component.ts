@@ -32,6 +32,7 @@ export class HeaderComponent implements OnInit {
 
   logout(): void {
     localStorage.clear();
+    this.authService.updateName("");
     this.router.navigate(['/login']);
 
   }

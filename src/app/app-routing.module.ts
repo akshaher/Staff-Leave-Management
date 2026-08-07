@@ -1,9 +1,8 @@
-import { NgModule } from '@angular/core';
-import { RouterModule, Routes } from '@angular/router';
+import {  Routes } from '@angular/router';
 import { MainLayoutComponent } from './layout/main-layout/main-layout.component';
 import { AuthLayoutComponent } from './layout/auth-layout/auth-layout.component';
 
-const routes: Routes = [
+export const routes: Routes = [
   {
     path: '',
     component: MainLayoutComponent,
@@ -12,32 +11,34 @@ const routes: Routes = [
       {
         path: 'login',
         loadChildren: () =>
-          import('./modules/auth/auth.module').then(
-            (m) => m.AuthModule,
+          import('./modules/auth/auth-routes').then(
+            (m) => m.AUTH_ROUTES,
           ),
       },
       {
         path: 'dashboard',
         loadChildren: () =>
-          import('./modules/dashboard/dashboard.module').then(
-            (m) => m.DashboardModule,
+          import('./modules/dashboard/dashboard-routes').then(
+            (m) => m.DASHBOARD_ROUTES 
           ),
       },
       {
         path: 'staff',
         loadChildren: () =>
-          import('./modules/staff/staff.module').then((m) => m.StaffModule),
+          import('./modules/staff/staff-routes').then((r: any) =>
+            r.STAFF_ROUTES ?? r.staffRoutes ?? r.routes ?? [],
+          ),
       },
       {
         path: 'leave',
         loadChildren: () =>
-          import('./modules/leave/leave.module').then((m) => m.LeaveModule),
+          import('./modules/leave/leave-routes').then((m) => m.LEAVE_ROUTES),
       },
       {
         path: 'products',
         loadChildren: () =>
-          import('./modules/products/product.module').then(
-            (module) => module.ProductModule,
+          import('./modules/products/product-routes').then(
+            (module) => module.PRODUCT_ROUTES,
           ),
       },
     ],
@@ -49,15 +50,11 @@ const routes: Routes = [
       {
         path: '',
         loadChildren: () =>
-          import('./modules/auth/auth.module').then((m) => m.AuthModule),
+          import('./modules/auth/auth-routes').then((m) => m.AUTH_ROUTES),
       },
     ],
   },
   { path: '**', redirectTo: 'auth/login' },
 ];
 
-@NgModule({
-  imports: [RouterModule.forRoot(routes)],
-  exports: [RouterModule],
-})
-export class AppRoutingModule {}
+

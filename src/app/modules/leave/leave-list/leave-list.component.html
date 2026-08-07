@@ -40,7 +40,7 @@
         <tbody>
           <tr *ngFor="let leave of leaveList; let i = index">
             <td>{{ i + 1 }}</td>
-            <td *ngIf="role === 'HOD'">{{ leave.staffId.fullName | splitName }}</td>
+            <td *ngIf="role === 'HOD'">{{ leave.staffId?.fullName | splitName }}</td>
             <td>{{ leave.fromDate | date }}</td>
             <td>{{ leave.toDate | date }}</td>
             <td>{{ leave.reason | titlecase }}</td>
@@ -96,6 +96,8 @@
     </div>
   </div>
 </div>
+
+{{leaveList | json}}
 
 
 <app-confirm-modal

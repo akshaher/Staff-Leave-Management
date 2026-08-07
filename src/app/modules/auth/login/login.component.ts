@@ -20,7 +20,7 @@ export class LoginComponent implements OnInit {
   loading = false;
   showPassword = false;
   loginError = '';
-  userName:any='';
+
   name$=this.authService.name$;
 
   constructor(
@@ -66,16 +66,12 @@ export class LoginComponent implements OnInit {
   }
 
   updateName(){
-
-    
-    this.authService.updateName(this.userName);
-
-
-    console.log("name:", this.userName);
+    this.authService.updateName(this.loginForm.value.email);
+    console.log("name:", this.loginForm.value.email);
   }
 
   onSubmit(): void {
-    // this.authService.updateName(this.name);
+    this.updateName();
     this.submitted = true;
     this.loginError = '';
     if (this.loginForm.invalid) {
