@@ -72,12 +72,12 @@
                       placeholder="firstname.lastname@company.com"
                       formControlName="email"
                       />
-                      @if (submitted && f.email?.errors?.['email']) {
+                      @if (submitted && f.email.errors?.['email']) {
                         <small class="text-danger">
                           Enter valid email
                         </small>
                       }
-                      @if (submitted &&  f.email?.errors?.['emailExists']) {
+                      @if (submitted &&  f.email.errors?.['emailExists']) {
                         <small  class="text-danger">
                           Email Already Exists, Please try with another one.
                         </small>
