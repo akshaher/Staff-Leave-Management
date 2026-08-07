@@ -8,67 +8,66 @@
 
   <!-- HOD Dashboard -->
 
-  <div *ngIf="role === 'HOD'" class="row g-3">
-    <div class="col-md-4">
-      <div class="card metric-card">
-        <div class="card-body">
-          <div class="metric-icon metric-primary"><i class="bi bi-people"></i></div>
-          <h5>Total Staff Members</h5>
-
-          <h2>
-            {{ totalStaff }}
-          </h2>
+  @if (role === 'HOD') {
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="card metric-card">
+          <div class="card-body">
+            <div class="metric-icon metric-primary"><i class="bi bi-people"></i></div>
+            <h5>Total Staff Members</h5>
+            <h2>
+              {{ totalStaff }}
+            </h2>
+          </div>
         </div>
       </div>
     </div>
-  </div>
+  }
 
   <!-- Staff Dashboard -->
 
-  <div *ngIf="role === 'STAFF'" class="row g-3">
-    <div class="col-md-4">
-      <div class="card metric-card">
-        <div class="card-body">
-          <div class="metric-icon metric-primary"><i class="bi bi-calendar-range"></i></div>
-          <h5>Total Leaves</h5>
-
-          <h2>
-            {{ totalLeaves }}
-          </h2>
+  @if (role === 'STAFF') {
+    <div class="row g-3">
+      <div class="col-md-4">
+        <div class="card metric-card">
+          <div class="card-body">
+            <div class="metric-icon metric-primary"><i class="bi bi-calendar-range"></i></div>
+            <h5>Total Leaves</h5>
+            <h2>
+              {{ totalLeaves }}
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card metric-card">
+          <div class="card-body">
+            <div class="metric-icon metric-success"><i class="bi bi-check2-circle"></i></div>
+            <h5>Approved</h5>
+            <h2 class="text-success">
+              {{ approvedLeaves }}
+            </h2>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-4">
+        <div class="card metric-card">
+          <div class="card-body">
+            <div class="metric-icon metric-danger"><i class="bi bi-x-circle"></i></div>
+            <h5>Rejected</h5>
+            <h2 class="text-danger">
+              {{ rejectedLeaves }}
+            </h2>
+          </div>
         </div>
       </div>
     </div>
+  }
 
 
-    <div class="col-md-4">
-      <div class="card metric-card">
-        <div class="card-body">
-          <div class="metric-icon metric-success"><i class="bi bi-check2-circle"></i></div>
-          <h5>Approved</h5>
-
-          <h2 class="text-success">
-            {{ approvedLeaves }}
-          </h2>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4">
-      <div class="card metric-card">
-        <div class="card-body">
-          <div class="metric-icon metric-danger"><i class="bi bi-x-circle"></i></div>
-          <h5>Rejected</h5>
-
-          <h2 class="text-danger">
-            {{ rejectedLeaves }}
-          </h2>
-        </div>
-      </div>
-    </div>
-  </div>
-  
-
-  <div *ngIf="role !== 'STAFF' && role !== 'HOD'">
+  @if (role !== 'STAFF' && role !== 'HOD') {
+    <div>
       <p>Role Not found</p>
-  </div>
+    </div>
+  }
 </div>

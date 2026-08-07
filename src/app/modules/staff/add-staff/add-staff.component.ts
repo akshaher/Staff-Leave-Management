@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { UserService } from '../../../core/services/user.service';
-import { NgClass, NgIf } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-add-staff',
     templateUrl: './add-staff.component.html',
     styleUrls: ['./add-staff.component.css'],
     standalone: true,
-    imports: [RouterLink, ReactiveFormsModule, NgClass, NgIf]
+    imports: [RouterLink, ReactiveFormsModule, NgClass]
 })
 export class AddStaffComponent implements OnInit {
   staffForm: UntypedFormGroup;

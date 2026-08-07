@@ -5,14 +5,14 @@ import * as L from 'leaflet';
 import { HttpClient } from '@angular/common/http';
 import { LocationService } from 'src/app/core/services/location.service';
 import { HighchartsChartModule } from 'highcharts-angular';
-import { NgIf, NgFor, NgClass, SlicePipe, DatePipe } from '@angular/common';
+import { NgClass, SlicePipe, DatePipe } from '@angular/common';
 
 @Component({
     selector: 'app-admin-dashboard',
     templateUrl: './admin-dashboard.component.html',
     styleUrls: ['./admin-dashboard.component.css'],
     standalone: true,
-    imports: [NgIf, HighchartsChartModule, NgFor, NgClass, SlicePipe, DatePipe]
+    imports: [HighchartsChartModule, NgClass, SlicePipe, DatePipe]
 })
 export class AdminDashboardComponent implements OnInit {
 

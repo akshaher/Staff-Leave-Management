@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { UserService } from '../../../core/services/user.service';
-import { NgIf } from '@angular/common';
+
 
 @Component({
     selector: 'app-view-staff',
     templateUrl: './view-staff.component.html',
     styleUrls: ['./view-staff.component.css'],
     standalone: true,
-    imports: [NgIf, RouterLink]
+    imports: [RouterLink]
 })
 export class ViewStaffComponent implements OnInit {
   staffDetails: any;

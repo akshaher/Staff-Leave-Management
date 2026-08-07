@@ -12,7 +12,7 @@ import {
 import { ProductQuery } from 'src/app/core/models/product-query.model';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { ProductImageDirective } from '../../../../shared/directives/product-image.directive';
-import { NgFor, NgIf, NgClass, DecimalPipe } from '@angular/common';
+import { NgClass, DecimalPipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 @Component({
@@ -21,14 +21,12 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
     styleUrls: ['./product-list.component.css'],
     standalone: true,
     imports: [
-        ReactiveFormsModule,
-        FormsModule,
-        NgFor,
-        NgIf,
-        ProductImageDirective,
-        NgClass,
-        DecimalPipe,
-    ],
+    ReactiveFormsModule,
+    FormsModule,
+    ProductImageDirective,
+    NgClass,
+    DecimalPipe
+],
 })
 export class ProductListComponent implements OnInit {
   products: Product[] = [];

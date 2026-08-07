@@ -2,14 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { UntypedFormBuilder, UntypedFormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { Router, RouterLink } from '@angular/router';
 import { AuthService } from 'src/app/core/services/auth.service';
-import { NgIf, NgClass, AsyncPipe } from '@angular/common';
+import { NgClass, AsyncPipe } from '@angular/common';
 
 @Component({
     selector: 'app-register',
     templateUrl: './register.component.html',
     styleUrls: ['./register.component.css'],
     standalone: true,
-    imports: [ReactiveFormsModule, NgIf, NgClass, RouterLink, AsyncPipe]
+    imports: [ReactiveFormsModule, NgClass, RouterLink, AsyncPipe]
 })
 export class RegisterComponent implements OnInit {
 

@@ -4,14 +4,14 @@ import { Router, RouterLink } from '@angular/router';
 import { BehaviorSubject } from 'rxjs';
 import { AuthService } from 'src/app/core/services/auth.service';
 import { ForkService } from 'src/app/core/services/forkJoin.service';
-import { NgIf, NgClass } from '@angular/common';
+import { NgClass } from '@angular/common';
 
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
     styleUrls: ['./login.component.css'],
     standalone: true,
-    imports: [ReactiveFormsModule, NgIf, NgClass, RouterLink]
+    imports: [ReactiveFormsModule, NgClass, RouterLink]
 })
 export class LoginComponent implements OnInit {
 

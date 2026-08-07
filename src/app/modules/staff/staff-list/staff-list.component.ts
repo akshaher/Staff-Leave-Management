@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { UserService } from '../../../core/services/user.service';
 import { SortStaffPipe } from '../../../shared/pipes/sort.pipe';
 import { SearchStaffPipe } from '../../../shared/pipes/search.pipe';
-import { NgFor, NgIf, SlicePipe } from '@angular/common';
+import { SlicePipe } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { RouterLink } from '@angular/router';
 
@@ -11,7 +11,7 @@ import { RouterLink } from '@angular/router';
     templateUrl: './staff-list.component.html',
     styleUrls: ['./staff-list.component.css'],
     standalone: true,
-    imports: [RouterLink, ReactiveFormsModule, FormsModule, NgFor, NgIf, SlicePipe, SearchStaffPipe, SortStaffPipe]
+    imports: [RouterLink, ReactiveFormsModule, FormsModule, SlicePipe, SearchStaffPipe, SortStaffPipe]
 })
 export class StaffListComponent implements OnInit {
   staffList: any[] = [];

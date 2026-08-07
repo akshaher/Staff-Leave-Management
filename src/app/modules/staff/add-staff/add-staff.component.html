@@ -11,35 +11,55 @@
         <div class="mb-3">
           <label class="form-label">Full Name</label>
           <input type="text" formControlName="fullName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['fullName'].errors }" />
-          <div *ngIf="submitted && f['fullName'].errors" class="invalid-feedback">
-            <div *ngIf="f['fullName'].errors['required']">Full Name is required</div>
-          </div>
+          @if (submitted && f['fullName'].errors) {
+            <div class="invalid-feedback">
+              @if (f['fullName'].errors['required']) {
+                <div>Full Name is required</div>
+              }
+            </div>
+          }
         </div>
 
         <div class="mb-3">
           <label class="form-label">Email</label>
           <input type="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['email'].errors }" />
-          <div *ngIf="submitted && f['email'].errors" class="invalid-feedback">
-            <div *ngIf="f['email'].errors['required']">Email is required</div>
-            <div *ngIf="f['email'].errors['email']">Email must be a valid email address</div>
-          </div>
+          @if (submitted && f['email'].errors) {
+            <div class="invalid-feedback">
+              @if (f['email'].errors['required']) {
+                <div>Email is required</div>
+              }
+              @if (f['email'].errors['email']) {
+                <div>Email must be a valid email address</div>
+              }
+            </div>
+          }
         </div>
 
         <div class="mb-3">
           <label class="form-label">Mobile</label>
           <input type="text" formControlName="mobileNumber" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['mobileNumber'].errors }" />
-          <div *ngIf="submitted && f['mobileNumber'].errors" class="invalid-feedback">
-            <div *ngIf="f['mobileNumber'].errors['required']">Mobile number is required</div>
-            <div *ngIf="f['mobileNumber'].errors['pattern']">Mobile number must be 10 digits</div>
-          </div>
+          @if (submitted && f['mobileNumber'].errors) {
+            <div class="invalid-feedback">
+              @if (f['mobileNumber'].errors['required']) {
+                <div>Mobile number is required</div>
+              }
+              @if (f['mobileNumber'].errors['pattern']) {
+                <div>Mobile number must be 10 digits</div>
+              }
+            </div>
+          }
         </div>
 
         <div class="mb-3">
           <label class="form-label">Department</label>
           <input type="text" formControlName="department" class="form-control" [ngClass]="{ 'is-invalid': submitted && f['department'].errors }" />
-          <div *ngIf="submitted && f['department'].errors" class="invalid-feedback">
-            <div *ngIf="f['department'].errors['required']">Department is required</div>
-          </div>
+          @if (submitted && f['department'].errors) {
+            <div class="invalid-feedback">
+              @if (f['department'].errors['required']) {
+                <div>Department is required</div>
+              }
+            </div>
+          }
         </div>
 
         <div class="text-end">

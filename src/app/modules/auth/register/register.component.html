@@ -20,141 +20,157 @@
                   class="form-control"
                   placeholder="x y z"
                   formControlName="fullName"
-                />
-                <small
-                  class="text-danger"
-                  *ngIf="submitted && f.fullName.errors"
-                >
-                  Full Name is required
-                </small>
-              </div>
-
-              <div class="row">
-                <div class="col-md-6 mb-3">
-                  <label class="form-label"> Mobile Number </label>
-                  <input
-                    type="text"
-                    class="form-control"
-                    placeholder="9876543210"
-                    formControlName="mobileNumber"
                   />
-                  <small
-                    class="text-danger"
-                    *ngIf="submitted && f.mobileNumber.errors"
-                  >
-                    Enter valid mobile number
-                  </small>
+                  @if (submitted && f.fullName.errors) {
+                    <small
+                      class="text-danger"
+                      >
+                      Full Name is required
+                    </small>
+                  }
                 </div>
 
-                <div class="col-md-6 mb-3">
-                  <label class="form-label"> Role </label>
-                  <select class="form-select" formControlName="role">
-                    <option value="">Select Role</option>
-                    <option value="HOD">HOD</option>
-                    <option value="STAFF">Staff</option>
-                  </select>
+                <div class="row">
+                  <div class="col-md-6 mb-3">
+                    <label class="form-label"> Mobile Number </label>
+                    <input
+                      type="text"
+                      class="form-control"
+                      placeholder="9876543210"
+                      formControlName="mobileNumber"
+                      />
+                      @if (submitted && f.mobileNumber.errors) {
+                        <small
+                          class="text-danger"
+                          >
+                          Enter valid mobile number
+                        </small>
+                      }
+                    </div>
 
-                  <small class="text-danger" *ngIf="submitted && f.role.errors">
-                    Role is required
-                  </small>
+                    <div class="col-md-6 mb-3">
+                      <label class="form-label"> Role </label>
+                      <select class="form-select" formControlName="role">
+                        <option value="">Select Role</option>
+                        <option value="HOD">HOD</option>
+                        <option value="STAFF">Staff</option>
+                      </select>
+
+                      @if (submitted && f.role.errors) {
+                        <small class="text-danger">
+                          Role is required
+                        </small>
+                      }
+                    </div>
+                  </div>
+
+                  <div class="mb-3">
+                    <label class="form-label"> Email Address </label>
+                    <input
+                      type="email"
+                      class="form-control"
+                      placeholder="firstname.lastname@company.com"
+                      formControlName="email"
+                      />
+                      @if (submitted && f.email?.errors?.['email']) {
+                        <small class="text-danger">
+                          Enter valid email
+                        </small>
+                      }
+                      @if (submitted &&  f.email?.errors?.['emailExists']) {
+                        <small  class="text-danger">
+                          Email Already Exists, Please try with another one.
+                        </small>
+                      }
+                    </div>
+
+                    <div class="mb-3">
+                      <label class="form-label"> Department </label>
+                      <input
+                        type="text"
+                        class="form-control"
+                        placeholder="Software Developer"
+                        formControlName="department"
+                        />
+                        @if (submitted && f.department.errors) {
+                          <small
+                            class="text-danger"
+                            >
+                            Department is required
+                          </small>
+                        }
+                      </div>
+
+                      <div class="mb-3">
+                        <label class="form-label"> Password </label>
+                        <div class="input-group">
+                          <input
+                            [type]="showPassword ? 'text' : 'password'"
+                            class="form-control"
+                            formControlName="password"
+                            />
+                            <button
+                              type="button"
+                              class="btn btn-outline-secondary"
+                              (click)="togglePassword()"
+                              >
+                              <i
+                                class="bi"
+                                [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"
+                                >
+                              </i>
+                            </button>
+                          </div>
+
+                          <small class="text-muted">
+                            Password must be at least 8 characters long and contain at
+                            least one special character and one letter.
+                          </small>
+
+                          <br />
+
+                          @if (submitted && f.password.errors) {
+                            <small
+                              class="text-danger"
+                              >
+                              Invalid Password
+                            </small>
+                          }
+                        </div>
+
+                        @if (loginError) {
+                          <div class="alert alert-danger">
+                            {{ loginError }}
+                          </div>
+                        }
+                        <div class="d-grid mt-4">
+                          <button  class="btn btn-primary btn-lg">
+                            @if (!loading) {
+                              <span>Sign up</span>
+                            }
+
+                            @if (loading) {
+                              <span>
+                                <span class="spinner-border spinner-border-sm me-2"> </span>
+                                Loading...
+                              </span>
+                            }
+                          </button>
+                        </div>
+                      </form>
+
+                      <div class="text-center mt-4">
+                        <p class="mb-0">
+                          Already have an account?
+
+                          <a routerLink="/auth/login" class="text-decoration-none">
+                            Login
+                          </a>
+                        </p>
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
-
-              <div class="mb-3">
-                <label class="form-label"> Email Address </label>
-                <input
-                  type="email"
-                  class="form-control"
-                  placeholder="firstname.lastname@company.com"
-                  formControlName="email"
-                />
-                <small class="text-danger" *ngIf="submitted && f.email?.errors?.['email']">
-                  Enter valid email
-                </small>
-                <small  class="text-danger" *ngIf="submitted &&  f.email?.errors?.['emailExists']">
-                  Email Already Exists, Please try with another one.
-                </small>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label"> Department </label>
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Software Developer"
-                  formControlName="department"
-                />
-                <small
-                  class="text-danger"
-                  *ngIf="submitted && f.department.errors"
-                >
-                  Department is required
-                </small>
-              </div>
-
-              <div class="mb-3">
-                <label class="form-label"> Password </label>
-                <div class="input-group">
-                  <input
-                    [type]="showPassword ? 'text' : 'password'"
-                    class="form-control"
-                    formControlName="password"
-                  />
-                  <button
-                    type="button"
-                    class="btn btn-outline-secondary"
-                    (click)="togglePassword()"
-                  >
-                    <i
-                      class="bi"
-                      [ngClass]="showPassword ? 'bi-eye-slash' : 'bi-eye'"
-                    >
-                    </i>
-                  </button>
-                </div>
-
-                <small class="text-muted">
-                  Password must be at least 8 characters long and contain at
-                  least one special character and one letter.
-                </small>
-
-                <br />
-
-                <small
-                  class="text-danger"
-                  *ngIf="submitted && f.password.errors"
-                >
-                  Invalid Password
-                </small>
-              </div>
-   
-              <div *ngIf="loginError" class="alert alert-danger">
-                {{ loginError }}
-              </div>
-              <div class="d-grid mt-4">
-                <button  class="btn btn-primary btn-lg">
-                  <span *ngIf="!loading">Sign up</span>
-
-                <span *ngIf="loading">
-                  <span class="spinner-border spinner-border-sm me-2"> </span>
-                  Loading...
-                </span>
-                </button>
-              </div>
-            </form>
-
-            <div class="text-center mt-4">
-              <p class="mb-0">
-                Already have an account?
-
-                <a routerLink="/auth/login" class="text-decoration-none">
-                  Login
-                </a>
-              </p>
             </div>
           </div>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>

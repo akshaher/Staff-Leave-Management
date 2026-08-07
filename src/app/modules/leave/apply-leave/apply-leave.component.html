@@ -8,33 +8,47 @@
     </div>
     <div class="card-body">
       <form [formGroup]="leaveForm" (ngSubmit)="onSubmit()">
-        <div formGroupName="leaveDate"> 
-        <div class="mb-3">
-          <label class="form-label">Leave From Date</label>
-          <input type="date" formControlName="fromDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && leaveForm.get('leaveDate.fromDate')?.errors?.['required'] }" />
-          <div *ngIf="submitted &&  leaveForm.get('leaveDate.fromDate')?.errors?.['required']" class="invalid-feedback">
-            <div *ngIf="leaveForm.get('leaveDate.fromDate')?.errors?.['required']">From Date is required</div>
+        <div formGroupName="leaveDate">
+          <div class="mb-3">
+            <label class="form-label">Leave From Date</label>
+            <input type="date" formControlName="fromDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && leaveForm.get('leaveDate.fromDate')?.errors?.['required'] }" />
+            @if (submitted &&  leaveForm.get('leaveDate.fromDate')?.errors?.['required']) {
+              <div class="invalid-feedback">
+                @if (leaveForm.get('leaveDate.fromDate')?.errors?.['required']) {
+                  <div>From Date is required</div>
+                }
+              </div>
+            }
           </div>
-        </div>
 
-        <div class="mb-3">
-          <label class="form-label">Leave To Date</label>
-          <input type="date" formControlName="toDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && (leaveForm.get('leaveDate.toDate')?.errors || leaveForm.get('leaveDate')?.errors?.['dateRange']) }" />
-          <div *ngIf="submitted && leaveForm.get('leaveDate.toDate')?.errors" class="invalid-feedback">
-            <div *ngIf="leaveForm.get('leaveDate.toDate')?.errors?.['required']">To Date is required</div>
+          <div class="mb-3">
+            <label class="form-label">Leave To Date</label>
+            <input type="date" formControlName="toDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && (leaveForm.get('leaveDate.toDate')?.errors || leaveForm.get('leaveDate')?.errors?.['dateRange']) }" />
+            @if (submitted && leaveForm.get('leaveDate.toDate')?.errors) {
+              <div class="invalid-feedback">
+                @if (leaveForm.get('leaveDate.toDate')?.errors?.['required']) {
+                  <div>To Date is required</div>
+                }
+              </div>
+            }
+            @if (submitted && leaveForm.get('leaveDate')?.errors?.['dateRange']) {
+              <div class="invalid-feedback d-block">
+                To Date must be the same or after From Date
+              </div>
+            }
           </div>
-          <div *ngIf="submitted && leaveForm.get('leaveDate')?.errors?.['dateRange']" class="invalid-feedback d-block">
-            To Date must be the same or after From Date
-          </div>
-        </div>
         </div>
 
         <div class="mb-3">
           <label class="form-label">Reason</label>
           <textarea formControlName="reason" class="form-control" rows="3" [ngClass]="{ 'is-invalid': submitted && f['reason'].errors }"></textarea>
-          <div *ngIf="submitted && f['reason'].errors" class="invalid-feedback">
-            <div *ngIf="f['reason'].errors['required']">Reason is required</div>
-          </div>
+          @if (submitted && f['reason'].errors) {
+            <div class="invalid-feedback">
+              @if (f['reason'].errors['required']) {
+                <div>Reason is required</div>
+              }
+            </div>
+          }
         </div>
 
         <div class="text-end">

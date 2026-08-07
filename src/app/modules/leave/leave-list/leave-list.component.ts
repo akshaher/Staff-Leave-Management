@@ -6,14 +6,14 @@ import { SplitNamePipe } from '../../../shared/pipes/split.pipe';
 import { ToastComponent } from '../../../shared/components/Toast/toast.component';
 import { ConfirmModalComponent } from '../../../shared/components/confirm-Modal/confirm-Modal.component';
 import { RouterLink } from '@angular/router';
-import { NgIf, NgFor, NgClass, TitleCasePipe, DatePipe, JsonPipe } from '@angular/common';
+import { NgClass, TitleCasePipe, DatePipe, JsonPipe } from '@angular/common';
 
 @Component({
     selector: 'app-leave-list',
     templateUrl: './leave-list.component.html',
     styleUrls: ['./leave-list.component.css'],
     standalone: true,
-    imports: [NgIf, RouterLink, NgFor, NgClass, ConfirmModalComponent, ToastComponent, TitleCasePipe, DatePipe, SplitNamePipe,JsonPipe]
+    imports: [RouterLink, NgClass, ConfirmModalComponent, ToastComponent, TitleCasePipe, DatePipe, SplitNamePipe, JsonPipe]
 })
 export class LeaveListComponent implements OnInit, OnDestroy {
   leaveList: any[] = [];
