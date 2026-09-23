@@ -1,0 +1,22 @@
+<div class="deferred-card">
+  <h2>🚀 Deferred Component Loaded</h2>
+  <p>{{templateCheck()}}</p>
+
+  <p>
+    This component was loaded only when its defer trigger was activated.
+  </p>
+
+  <p>
+    Current time:
+    <strong>{{ currentTime | date: 'mediumTime' }}</strong>
+  </p>
+  <p>
+    Username -: {{username()}}
+    Userage -: {{userage()}}
+    {{displayName()}}
+  </p>
+
+  <button (click)="refreshTime()">
+    Refresh Time
+  </button>
+</div>

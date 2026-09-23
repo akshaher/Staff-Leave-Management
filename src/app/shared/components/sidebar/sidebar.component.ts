@@ -18,5 +18,7 @@ export class SidebarComponent implements OnInit {
   ngOnInit(): void {
     // Defaulting to 'HOD' for dummy testing if not set
     this.role = this.authService.getUserRole();
+    console.log(this.role);
+    
   }
 }

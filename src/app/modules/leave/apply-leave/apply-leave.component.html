@@ -11,7 +11,7 @@
         <div formGroupName="leaveDate">
           <div class="mb-3">
             <label class="form-label">Leave From Date</label>
-            <input type="date" formControlName="fromDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && leaveForm.get('leaveDate.fromDate')?.errors?.['required'] }" />
+            <input type="date" formControlName="fromDate" [min]="minDate" class="form-control" [ngClass]="{ 'is-invalid': submitted && leaveForm.get('leaveDate.fromDate')?.errors?.['required'] }" />
             @if (submitted &&  leaveForm.get('leaveDate.fromDate')?.errors?.['required']) {
               <div class="invalid-feedback">
                 @if (leaveForm.get('leaveDate.fromDate')?.errors?.['required']) {

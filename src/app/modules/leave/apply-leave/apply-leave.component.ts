@@ -25,6 +25,7 @@ function dateRangeValidator(formGroup: UntypedFormGroup) {
 export class ApplyLeaveComponent implements OnInit {
   leaveForm: UntypedFormGroup;
   submitted = false;
+  minDate:string=new Date().toISOString().split('T')[0];
 
   constructor(
     private formBuilder: UntypedFormBuilder,

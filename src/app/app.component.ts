@@ -20,4 +20,8 @@ export class AppComponent implements OnChanges, OnInit {
 
  }
 
+ templateCheck(){
+    console.log('App template checked ');
+    
+ }
 }

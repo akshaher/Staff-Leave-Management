@@ -1,0 +1,135 @@
+<div class="container">
+
+  <h1>Angular defer Demo</h1>
+  <p>{{templateCall()}}</p>
+
+  <!-- ================================= -->
+  <!-- 1. DEFER ON VIEWPORT -->
+  <!-- ================================= -->
+
+  <section class="demo-section">
+
+    <h2>1. defer (on viewport)</h2>
+
+    <p>
+      Scroll down until the placeholder enters the viewport.
+    </p>
+
+    <div class="large-space">
+      Scroll down...
+    </div>
+
+    @defer (on viewport) {
+
+      <app-deferred-card />
+
+    } @placeholder {
+
+      <div class="placeholder">
+        📦 Scroll until this section enters the viewport.
+      </div>
+
+    } @loading {
+
+      <div class="loading">
+        ⏳ Loading component...
+      </div>
+
+    } @error {
+
+      <div class="error">
+        ❌ Failed to load component.
+      </div>
+
+    }
+
+  </section>
+
+
+  <!-- ================================= -->
+  <!-- 2. DEFER ON INTERACTION -->
+  <!-- ================================= -->
+
+  <section class="demo-section">
+
+    <h2>2. defer (on interaction)</h2>
+
+    <p>
+      Click the button below to load the component.
+    </p>
+
+    @defer (on interaction) {
+
+      <app-deferred-card />
+
+    } @placeholder {
+
+      <button
+        class="trigger-button"
+        (click)="handleInteraction()">
+
+        Click to Load Component
+
+      </button>
+
+    
+
+    } @loading {
+
+      <div class="loading">
+        ⏳ Component is loading...
+      </div>
+
+    }
+     
+
+  </section>
+   <p>
+        Click count: {{ interactionCount }}
+      </p>  
+
+
+  <!-- ================================= -->
+  <!-- 3. DEFER ON HOVER -->
+  <!-- ================================= -->
+
+  <section class="demo-section">
+
+    <h2>3. defer (on hover)</h2>
+
+    <p>
+      Hover over the box below.
+    </p>
+
+    @defer (on hover) {
+
+      <app-deferred-card [username]="username"  [userage]="userage"/>
+
+    } @placeholder {
+
+      <div
+        class="hover-box"
+        (mouseenter)="handleHover()">
+
+        🖱 Hover over me to load the component
+        
+      <p>
+        Hover count: {{ hoverCount }}
+      </p>
+
+      </div>
+
+
+    } @loading {
+
+      <div class="loading">
+        ⏳ Loading after hover...
+      </div>
+
+    }
+
+    <button type="submit" (click)="updateUser()">update signal value</button>
+
+  </section>
+
+</div>

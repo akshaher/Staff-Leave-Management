@@ -1,0 +1,10 @@
+<h1>Hello from parent Component</h1>
+<h3 [ngStyle]="{'color' : 'green'}" #titleRef>Lets go deeper in LifeCycle Hooks</h3>
+{{user.name}}
+<button (click)="changeName()">Change Name</button>
+<hr>
+<app-child  [user]="user">
+    <h1 header>Header</h1>
+    <h4 #content>This is projected Content!!</h4>
+    <h1 footer>Footer</h1>
+</app-child>

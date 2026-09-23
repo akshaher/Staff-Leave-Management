@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { BehaviorSubject, Observable, Subject } from 'rxjs';
+import { BehaviorSubject, Observable, Subject, throwError } from 'rxjs';
 import { environment } from '../../../environments/environment';
 import { jwtDecode } from 'jwt-decode';
-import { windowWhen } from 'rxjs/operators';
+import { catchError } from 'rxjs/operators';
 
 @Injectable({ providedIn: 'root' })
 export class AuthService {
@@ -19,12 +19,22 @@ export class AuthService {
     }
 
     register(userData: any): Observable<any> {
-        return this.http.post(`${this.baseUrl}/signup`, userData);
+        return this.http.post(`${this.baseUrl}/signup`, userData).pipe(
+            catchError((err) => {
+                console.error('Register error', err);
+                return throwError(() => err.error?.message || err);
+            })
+        );
     }
 
 
     login(loginData: any): Observable<any> {
-        return this.http.post(`${this.baseUrl}/login`, loginData)
+        return this.http.post(`${this.baseUrl}/login`, loginData).pipe(
+            catchError((err) => {
+                console.error('Login error', err);
+                return throwError(() => err.error?.message);
+            })
+        );
     }
 
     logout(): void {
@@ -48,7 +58,12 @@ export class AuthService {
         const refreshToken = this.getRefreshToken();
         console.log(refreshToken);
         
-        return this.http.post(`${this.baseUrl}/auth/refresh`, {refreshToken})
+        return this.http.post(`${this.baseUrl}/auth/refresh`, {refreshToken}).pipe(
+            catchError((err) => {
+                console.error('Refresh token error', err);
+                return throwError(() => err.error?.message || err);
+            })
+        );
     }
 
 

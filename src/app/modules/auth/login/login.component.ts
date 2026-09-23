@@ -71,7 +71,6 @@ export class LoginComponent implements OnInit {
   }
 
   onSubmit(): void {
-    this.updateName();
     this.submitted = true;
     this.loginError = '';
     if (this.loginForm.invalid) {
@@ -92,6 +91,8 @@ export class LoginComponent implements OnInit {
         
         localStorage.setItem('accessToken', response.accessToken);
         localStorage.setItem('refreshToken', response.refreshToken);
+    this.updateName();
+
         this.router.navigate(['/dashboard']);
       },
       error: (error) => {

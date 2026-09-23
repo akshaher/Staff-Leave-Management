@@ -12,7 +12,7 @@
         <div class="card login-card shadow-sm">
           <div class="card-body p-4">
             <div class="text-center mb-4">
-              <h2 class="fw-bold">Welcome Back</h2>
+              <h2 class="fw-bold" >Welcome Back</h2>
               <p class="text-muted">Sign in to manage your leave and team</p>
             </div>
 
@@ -79,7 +79,7 @@
                 }
 
                 <div class="d-grid">
-                  <button type="submit" class="btn btn-primary btn-lg" [disabled]="loading">
+                  <button type="submit" class="btn btn-primary btn-lg" title="Login" [disabled]="loading">
                     @if (!loading) {
                       <span>Login</span>
                     }
@@ -107,7 +107,7 @@
           </div>
 
           <div class="text-center mt-4">
-            <small class="text-muted"> © 2024 STAFFFLOW HR SYSTEMS </small>
+            <small class="text-muted" style="visibility: hidden"> © 2024 STAFFFLOW HR SYSTEMS </small>
           </div>
         </div>
       </div>
